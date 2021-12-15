@@ -14,8 +14,9 @@ const Objects = [
     x: 605,
     y: 1425,
     isHover: false,
-    onClick: () => {
-      // setOpenDialog2(true);
+    onClick: (e) => {
+      console.log(e.target.setX(1000))
+      // this.isHover = !this.isHover;
     },
   }
 ]
