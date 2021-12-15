@@ -1,4 +1,5 @@
 import './Theme/Styles/App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Button, CssBaseline, LinearProgress } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/core/styles';
@@ -8,6 +9,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IntlProvider } from 'react-redux-multilingual';
 import { useHistory } from 'react-router-dom';
+import { Slide, ToastContainer } from 'react-toastify';
+
 import MoreThanOneTabDialog from './components/Dialog/MoreThanOneTab';
 import Notifier from './components/Notifications/Notifications';
 import Root from './root';
@@ -16,13 +19,12 @@ import RTLMuiTheme from './Theme/MuiThemes/RTLMuiTheme';
 import translations from './translations';
 import jss from './utils/jssRTL';
 
-const ArticleApp = () => (
-  <SnackbarProvider>
-    <Notifier />
-    <CssBaseline />
-    <Root />
-  </SnackbarProvider>
-);
+// const Main = () => (
+//   <SnackbarProvider>
+//     <Notifier />
+
+//   </SnackbarProvider>
+// );
 
 const App = ({
   dir,
@@ -63,22 +65,28 @@ const App = ({
 
 
   return (
-    <IntlProvider translations={translations}>
-      {dir === 'rtl' ? (
-        <ThemeProvider theme={RTLMuiTheme}>
-          <StylesProvider jss={jss}>
-            <Loading />
-            <ArticleApp />
-          </StylesProvider>
-        </ThemeProvider>
-      ) : (
-        <ThemeProvider theme={MuiTheme}>
-          <Loading />
-          <ArticleApp />
-        </ThemeProvider>
-      )}
+    <>
+      <ThemeProvider theme={RTLMuiTheme}>
+        <StylesProvider jss={jss}>
+          <CssBaseline />
+          <Root />
+        </StylesProvider>
+      </ThemeProvider>
+      <Loading />
+      <ToastContainer
+        rtl
+        position="top-left"
+        autoClose={3000}
+        transition={Slide}
+        hideProgressBar={false}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        closeOnClick
+        limit={3}
+        draggable={false}
+      />
       <MoreThanOneTabDialog open={open} />
-    </IntlProvider>
+    </>
   );
 };
 

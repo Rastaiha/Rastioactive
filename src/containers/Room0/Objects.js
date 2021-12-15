@@ -1,10 +1,7 @@
-import { Grid, makeStyles } from '@material-ui/core';
-import React from 'react';
-import { Image, Layer, Stage, Star, Text } from 'react-konva';
-import { useHistory } from 'react-router-dom';
-import useImage from 'use-image';
+import { toast } from 'react-toastify';
 
-import ObjectImage from '../Object';
+let isTvClicked = false;
+let isSoundPlying = false;
 
 const getAnotherElementById = (element, id) => {
   return element.parent.children.filter((element) => element.attrs.id == id)[0]
@@ -18,8 +15,17 @@ const showElementSoftly = (element, duration) => {
   }, duration / 100)
   setTimeout(() => {
     clearInterval(timer)
-  }, duration)
+  }, duration + 100)
 }
+
+function playAudio(url) {
+  if (isSoundPlying) return
+  isSoundPlying = true;
+  const audio = new Audio(url)
+  audio.addEventListener('ended', () => { isSoundPlying = false; })
+  audio.play();
+}
+
 
 const Objects = [
   {
@@ -29,10 +35,6 @@ const Objects = [
     y: 860,
     isHover: false,
     opacity: 0,
-    // onClick: (e) => {
-    //   console.log(e.target.setX(1000))
-    //   // this.isHover = !this.isHover;
-    // },
   },
   {
     imageUrl: process.env.PUBLIC_URL + '/Room0/scan-monitor.png',
@@ -49,13 +51,25 @@ const Objects = [
     y: 575,
     isHover: false,
     onClick: (e) => {
+      if (isTvClicked) return;
+      toast.error("هشدار! ماده‌ای رادیو اکتیو خارج از محیط آزمایش یافت شد!")
+      isTvClicked = true;
       const redArea = getAnotherElementById(e.target, "red-area");
       const monitor = getAnotherElementById(e.target, "monitor");
       showElementSoftly(redArea, 2000);
       showElementSoftly(monitor, 1000);
     },
   },
-
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room0/layer-wall.png',
+    id: "1821",
+    x: 1030,
+    y: 575,
+    isHover: false,
+    onClick: (e) => {
+      playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
+    },
+  },
 ]
 
 export default Objects;
