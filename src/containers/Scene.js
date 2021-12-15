@@ -8,7 +8,7 @@ import Layout from './Layout';
 import ObjectImage from './Object';
 
 const Index = ({
-  backgroundImageLink = '/security_room/security-empty.png',
+  backgroundImageLink = '/Room0/background.png',
   objects,
 }) => {
   const history = useHistory();
@@ -16,8 +16,6 @@ const Index = ({
 
   const [backgroundImage] = useImage(process.env.PUBLIC_URL + backgroundImageLink);
   const scaleY = height / backgroundImage?.height;
-
-  console.log(objects)
 
   return (
     <Layout backgroundImage={backgroundImageLink}>
@@ -50,6 +48,5 @@ const Index = ({
     </Layout>
   );
 };
-
 
 export default Index;

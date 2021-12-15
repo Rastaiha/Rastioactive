@@ -1,14 +1,10 @@
-/* eslint-disable react/display-name */
-import { Grid, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import React from 'react';
-import { Image, Layer, Stage, Star, Text } from 'react-konva';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
-const height = window.innerHeight - 100;
-
-import Objects from './Objects';
 import Scene from '../Scene';
+import Objects from './Objects';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -21,7 +17,7 @@ const Index = () => {
   const classes = useStyles();
 
   return (
-    <Scene objects={Objects} />
+    <Scene backgroundImageLink={'/Room0/background.png'} objects={Objects} />
   );
 };
 

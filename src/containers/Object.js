@@ -23,14 +23,12 @@ const Index = ({
 
   return (
     <Image
-      id="salam!"
       image={image}
       offsetX={image.width / 2}
       offsetY={image.height / 2}
       {...props}
       x={x * scale}
       y={y * scale}
-      opacity={1}
       rotation={rotation}
       shadowColor="black"
       shadowBlur={10}

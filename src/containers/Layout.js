@@ -66,15 +66,15 @@ const Layout = ({
   const [openDialogMessage, setOpenDialogMessage] = React.useState(open || false);
   const history = useHistory();
 
-  useEffect(() => {
-    getPlayer();
-    getUserNotifications();
-  }, []);
+  // useEffect(() => {
+  //   getPlayer();
+  //   getUserNotifications();
+  // }, []);
 
   return (
     <>
       <div className={classes.background} />
-      <AppBar mode="GAME_ENVIRONMENT" position="fixed" />
+      {/* <AppBar mode="GAME_ENVIRONMENT" position="fixed" /> */}
       <div className={classes.container}>{props.children}</div>
     </>
   );
