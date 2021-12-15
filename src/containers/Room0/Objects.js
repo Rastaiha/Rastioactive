@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { ROOM1_NAME } from '../utils';
 
 let isTvClicked = false;
 let isSoundPlying = false;
@@ -118,6 +119,7 @@ const Objects = [
     y: 850,
     isHover: false,
     onClick: (e) => {
+      if (isSoundPlying) return;
       if (!isFakeDoorKnocked) {
         isFakeDoorKnocked = true;
         playAudio(process.env.PUBLIC_URL + '/Room0/bang2.mp3');
@@ -125,7 +127,7 @@ const Objects = [
         toast.info("اوه! بذار ببینم پشت اینجا چیه...");
         playAudio(process.env.PUBLIC_URL + '/Room0/bang2.mp3');
         setTimeout(() => {
-          window.location.href = '/room1';
+          window.location.href = `/${ROOM1_NAME}`;
         }, 6000)
       }
     },

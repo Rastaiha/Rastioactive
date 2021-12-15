@@ -17,7 +17,7 @@ const Index = () => {
   const classes = useStyles();
 
   return (
-    <Scene backgroundImageLink={'/Room0/background.png'} objects={Objects} />
+    <Scene backgroundImageLink={'/Room1/background.png'} objects={Objects} />
   );
 };
 
