@@ -76,7 +76,7 @@ const App = ({
       <ToastContainer
         rtl
         position="top-left"
-        autoClose={3000}
+        autoClose={6000}
         transition={Slide}
         hideProgressBar={false}
         pauseOnHover={false}
