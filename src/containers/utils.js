@@ -16,6 +16,20 @@ export const getAnotherElementById = (element, id) => {
   return desired_element;
 }
 
+export const areTwoElementsNear = (elem1, elem2) => {
+  if (Math.abs(elem1.getX() - elem2.getX()) < 50 && Math.abs(elem1.getY() - elem2.getY()) < 50) {
+    return true;
+  }
+  return false;
+}
+
+export const isElementNearPoint = (elem, point) => {
+  if (Math.abs(elem.getX() - point.x) < 50 && Math.abs(elem.getY() - point.y) < 50) {
+    return true;
+  }
+  return false;
+}
+
 export const showElementSoftly = (element, duration) => {
   let cnt = 0;
   const timer = setInterval(() => {

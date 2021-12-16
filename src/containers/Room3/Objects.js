@@ -2,13 +2,36 @@ import { toast } from 'react-toastify';
 
 import {
   addToToolbar,
+  areTwoElementsNear,
   getAnotherElementById,
   INSIDE_BOX_WITH_OFF_LAMP,
+  isElementNearPoint,
   isItemPicked,
   ROOM2_NAME,
+  showElementSoftly,
+  ROOM4_NAME,
 } from '../utils';
 
-console.log(!isItemPicked('book'))
+let isWW2Clear = false;
+let areAdasisPlacedInCorrectPlaces = false;
+
+const checkPlaceAdasisInCorrectPlaces = (e) => {
+  if (areAdasisPlacedInCorrectPlaces) return;
+  const adasi1 = getAnotherElementById(e.target, 'adasi-amoodi1');
+  const adasi2 = getAnotherElementById(e.target, 'adasi-amoodi2');
+  const firstPoint = { x: 811, y: 573 };
+  const secondPoint = { x: 415, y: 567 };
+  if ((isElementNearPoint(adasi1, firstPoint) && isElementNearPoint(adasi2, secondPoint)) ||
+    (isElementNearPoint(adasi1, secondPoint) && isElementNearPoint(adasi2, firstPoint))) {
+    toast.success('بزن زنگو!');
+    areAdasisPlacedInCorrectPlaces = true;
+    showElementSoftly(getAnotherElementById(e.target, "laser"), 2000);
+    setTimeout(() => {
+      window.location.href = `/${ROOM4_NAME}`;
+    }, 6000);
+  }
+
+}
 
 const Objects = (state, setState) => [
   {
@@ -22,7 +45,6 @@ const Objects = (state, setState) => [
         ...state,
         showMazeImage: true,
       })
-      // addToToolbar(e.target)
     }
   },
   {
@@ -38,6 +60,60 @@ const Objects = (state, setState) => [
       }, 6000);
     }
   },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/ww2.png',
+    id: "ww2",
+    x: 3300,
+    y: 900,
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/ww2-vivid.png',
+    id: "ww2-vivid",
+    x: 3298,
+    y: 895,
+    opacity: 0,
+  },
+
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/adasi-amoodi.png',
+    id: "adasi-amoodi1",
+    x: 2780,
+    y: 1163,
+    draggable: true,
+    onDragEnd: (e) => {
+      checkPlaceAdasisInCorrectPlaces(e);
+      console.log(e.target.getX(), e.target.getY())
+    }
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/adasi-amoodi.png',
+    id: "adasi-amoodi2",
+    x: 2870,
+    y: 1162,
+    draggable: true,
+    onDragEnd: (e) => {
+      checkPlaceAdasisInCorrectPlaces(e);
+      console.log(e.target.getX(), e.target.getY())
+    }
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/adasi-ofoghi.png',
+    id: "adasi-ofoghi",
+    x: 2648,
+    y: 1132,
+    draggable: true,
+    onClick: (e) => {
+    }
+  },
+
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/laser.png',
+    id: "laser",
+    x: 890,
+    y: 893,
+    opacity: 0,
+  },
+
   {
     imageUrl: process.env.PUBLIC_URL + '/Room3/closed-door.png',
     id: "closed-door",
@@ -63,15 +139,36 @@ const Objects = (state, setState) => [
     x: 3040,
     y: 1060,
     visible: false,
-    onClick: (e) => {
-      setState({
-        ...state,
-        showWindowDialog: true,
-        windowDoorCallback: () => {
+  },
 
-        },
-      })
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Toolbar/glass.png',
+    id: 'glass',
+    x: 1000,
+    y: 100,
+    draggable: true,
+    onDragEnd: (e) => {
+      if (isWW2Clear) return;
+      const ww2 = getAnotherElementById(e.target, 'ww2');
+      const glass = e.target;
+      const ww2_vivid = getAnotherElementById(e.target, "ww2-vivid");
+      if (areTwoElementsNear(ww2, glass)) {
+        isWW2Clear = true;
+        showElementSoftly(ww2_vivid, 1000);
+        toast.success('های هیتلر!')
+      }
     }
+  },
+  ...toolbarItems,
+]
+
+const toolbarItems = [
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Toolbar/glass-toolbar.png',
+    id: 'glass-toolbar',
+    x: 1000,
+    y: 900,
+    draggable: true,
   },
 ]
 
