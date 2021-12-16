@@ -19,8 +19,6 @@ const Index = () => {
   const classes = useStyles();
   const [state, setState] = React.useState();
 
-  console.log("@@@@")
-
   return (
     <>
       <Scene
@@ -29,14 +27,20 @@ const Index = () => {
         objects={Objects(state, setState)} />
       <Image
         image={'/Room1/scientists-big.png'}
-        open={state?.showScientists}
-        handleClose={() => { setState({ ...state, showScientists: !state.showScientists }) }}
+        open={state?.showScientistsImage}
+        handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
       />
       <Password
-        open={state?.showKeypad}
+        open={state?.showKeypadDialog}
         image={'/Room1/keypad-big.png'}
-        handleClose={() => { setState({ ...state, showKeypad: !state.showKeypad }) }}
+        handleClose={() => { setState({ ...state, showKeypadDialog: !state.showKeypadDialog }) }}
         callbackFunction={state?.keypadCallback}
+      />
+      <Password
+        open={state?.showSignsDialog}
+        image={'/Room1/keypad-big.png'}
+        handleClose={() => { setState({ ...state, showSignsDialog: !state.showSignsDialog }) }}
+        callbackFunction={state?.signsCallback}
       />
     </>
   );

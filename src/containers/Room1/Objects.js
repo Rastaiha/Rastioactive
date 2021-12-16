@@ -3,20 +3,14 @@ import { toast } from 'react-toastify';
 import {
   addToToolbar,
   getAnotherElementById,
+  INSIDE_BOX_WITH_OFF_LAMP,
   ROOM1_NAME,
+  ROOM2_NAME,
   showElementSoftly
 } from '../utils';
 
-let isTvClicked = false;
-let isSoundPlying = false;
-
-function playAudio(url) {
-  if (isSoundPlying) return
-  isSoundPlying = true;
-  const audio = new Audio(url)
-  audio.addEventListener('ended', () => { isSoundPlying = false; })
-  audio.play();
-}
+let isMagnetPicked = false;
+let isCoilPicked = false;
 
 const Objects = (state, setState) => [
   {
@@ -42,10 +36,11 @@ const Objects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/magnet.png',
     id: "magnet",
-    x: 1758,
-    y: 860,
+    x: 3940,
+    y: 690,
     draggable: true,
     onClick: (e) => {
+      isMagnetPicked = true;
       toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
@@ -58,9 +53,16 @@ const Objects = (state, setState) => [
     onClick: () => {
       setState({
         ...state,
-        showKeypad: true,
+        showKeypadDialog: true,
         keypadCallback: (inputText) => {
-          toast.success(inputText)
+          if (inputText == '5274') {
+            toast.success('فعلاً، حداحافظ!');
+            setTimeout(() => {
+              window.location.href = `/${ROOM2_NAME}`;
+            }, 6000)
+          } else {
+            toast.error('منو یاد زیرعسلی ننداز...');
+          }
         },
       })
     }
@@ -69,9 +71,10 @@ const Objects = (state, setState) => [
     imageUrl: process.env.PUBLIC_URL + '/Room1/coil.png',
     id: "coil",
     x: 75,
-    y: 650,
+    y: 922,
     draggable: true,
     onClick: (e) => {
+      isCoilPicked = true;
       toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
@@ -82,6 +85,24 @@ const Objects = (state, setState) => [
     x: 3800,
     y: 1396,
     onClick: (e) => {
+      if (!isMagnetPicked || !isCoilPicked) {
+        toast.error('یکم بیشتر تو اتاق بگرد...');
+        return;
+      }
+      setState({
+        ...state,
+        showSignsDialog: true,
+        signsCallback: (inputText) => {
+          if (inputText == '123563') {
+            toast.success('بریم ببینیم توی جعبه چه خبره...');
+            setTimeout(() => {
+              window.location.href = `/${INSIDE_BOX_WITH_OFF_LAMP}`;
+            }, 6000)
+          } else {
+            toast.error('وا نشد :(');
+          }
+        },
+      })
     },
   },
   {
@@ -104,7 +125,7 @@ const Objects = (state, setState) => [
     onClick: (e) => {
       setState({
         ...state,
-        showScientists: true,
+        showScientistsImage: true,
       })
     },
   },

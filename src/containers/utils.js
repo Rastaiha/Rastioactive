@@ -4,6 +4,9 @@ import { allObjects } from './AllObjects';
 
 export const ROOM0_NAME = 'room0';
 export const ROOM1_NAME = 'room1';
+export const ROOM2_NAME = 'room2';
+export const ROOM3_NAME = 'room3';
+export const ROOM4_NAME = 'room4';
 export const LAMP_SIMULATE = 'lamp_simulation';
 export const INSIDE_BOX_WITH_OFF_LAMP = 'off_lamp';
 export const INSIDE_BOX_WITH_ON_LAMP = 'on_lamp';

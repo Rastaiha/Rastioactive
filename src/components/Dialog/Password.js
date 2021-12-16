@@ -66,7 +66,10 @@ function Index({
       <DialogActions>
         <Grid container component={Paper} direction='column' spacing={2} justify='center'>
           <Grid item>
-            <TextField onChange={(e) => setInputText(e.target.value)} fullWidth variant='outlined' label='بزن رمزو!' />
+            <TextField
+              inputProps={{ className: 'ltr-input' }}
+              onChange={(e) => setInputText(e.target.value)}
+              fullWidth variant='outlined' label='بزن رمزو!' />
           </Grid>
           <Grid item>
             <Button fullWidth variant='contained' color='primary'
