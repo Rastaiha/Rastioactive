@@ -5,6 +5,7 @@ import useImage from 'use-image';
 
 import Scene from '../Scene';
 import Objects from './Objects';
+import Message from '../../components/Dialog/Message';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -15,9 +16,21 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   const history = useHistory();
   const classes = useStyles();
+  const [state, setState] = React.useState();
+
+  console.log("@@@@")
 
   return (
-    <Scene backgroundImageLink={'/Room1/background.png'} objects={Objects} />
+    <>
+      <Scene
+        showScientistsDialog
+        backgroundImageLink={'/Room1/background.png'}
+        objects={Objects(state, setState)} />
+      <Message
+        open={state?.showScientists}
+        handleClose={() => { setState({ ...state, showScientists: !state.showScientists }) }}
+      />
+    </>
   );
 };
 

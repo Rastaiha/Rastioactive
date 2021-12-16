@@ -57,7 +57,7 @@ function Index({
   const [text, setText] = React.useState(inputText || 'آیا مطمئن هستید؟');
 
   return (
-    <Dialog maxWidth="xs" TransitionComponent={Slide} open={open} onClose={handleClose} PaperComponent='false'>
+    <Dialog maxWidth="xs" open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
           <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
@@ -70,16 +70,16 @@ function Index({
               {text}
             </Typography>
           </Grid>
+          <Grid item>
+            <Typography>
+              {text}
+            </Typography>
+          </Grid>
           <Grid item container justify='center' alignItems='center'>
-            <ButtonGroup fullWidth variant='contained' color='primary'>
-              <Button
-                onClick={() => { callbackFunction(); handleClose(); }}>
-                {'تایید'}
-              </Button>
-              <Button onClick={() => handleClose()}>
-                {'لغو'}
-              </Button>
-            </ButtonGroup>
+            <Button fullWidth variant='contained' color='primary'
+              onClick={() => { callbackFunction(); handleClose(); }}>
+              {'تایید'}
+            </Button>
           </Grid>
         </Grid>
       </DialogActions>

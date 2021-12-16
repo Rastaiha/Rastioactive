@@ -10,6 +10,7 @@ import ObjectImage from './Object';
 const Index = ({
   backgroundImageLink = '/Room0/background.png',
   objects,
+  toolbarObjects = [],
 }) => {
   const history = useHistory();
   const height = window.innerHeight;
@@ -23,6 +24,7 @@ const Index = ({
         width={Math.min(backgroundImage?.width * scaleY, window.innerWidth)}
         height={height}>
         <Layer
+          id='background'
           draggable
           dragBoundFunc={(pos) => {
             pos.y = 0;
@@ -41,6 +43,11 @@ const Index = ({
             src={process.env.PUBLIC_URL + backgroundImageLink}
           />
           {objects.map((object) =>
+            <ObjectImage key={object.id} scale={scaleY} {...object} />)
+          }
+        </Layer>
+        <Layer id='toolbar' width={window.innerWidth} height={height} >
+          {toolbarObjects.map((object) =>
             <ObjectImage key={object.id} scale={scaleY} {...object} />)
           }
         </Layer>
