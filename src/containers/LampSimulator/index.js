@@ -2,14 +2,16 @@ import {
   Button,
   Container,
   Grid,
+  TextField,
+  Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import useImage from 'use-image';
-
-import Scene from '../Scene';
-import Objects from './Objects';
+import { toast } from 'react-toastify';
+import {
+  INSIDE_BOX_WITH_ON_LAMP,
+} from '../utils';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -40,6 +42,18 @@ const Index = ({
 }) => {
   const history = useHistory();
   const classes = useStyles({ backgroundImage });
+  const [answer, setAnswer] = React.useState();
+
+  const handleSubmit = () => {
+    if (answer == 'الکترومغناطیس') {
+      toast.success('خنده بر لب می‌زنم تا کس نداند راز من!');
+      setTimeout(() => {
+        window.location.href = `/${INSIDE_BOX_WITH_ON_LAMP}`;
+      }, 6000);
+    } else {
+      toast.error('ورنه این دنیا که ما دیدیم، خندیدن نداشت :(');
+    }
+  }
 
   return (
     <>
@@ -51,13 +65,20 @@ const Index = ({
           </Grid>
           <Grid item container direction='column' justifyContent='center' sm={3} spacing={2}>
             <Grid item>
-              <Button size='large' variant='contained' color='primary' fullWidth>
-                {'سلام'}
-              </Button>
+              <Typography align='center' variant='h2'>
+                {'قانون فارادی'}
+              </Typography>
+              <Typography align='center' variant='h2'>
+                {'دومین قانون بنیادی طبیعت'}
+              </Typography>
             </Grid>
             <Grid item>
-              <Button size='large' variant='contained' color='primary' fullWidth>
-                {'سلام'}
+              <TextField onChange={(e) => { setAnswer(e.target.value) }}
+                variant='outlined' color='primary' fullWidth label='پاسخ خود را اینجا وارد کنید' />
+            </Grid>
+            <Grid item>
+              <Button onClick={handleSubmit} variant='contained' color='primary' fullWidth>
+                {'ثبت'}
               </Button>
             </Grid>
           </Grid>

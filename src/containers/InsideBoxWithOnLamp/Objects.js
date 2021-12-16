@@ -3,41 +3,57 @@ import { toast } from 'react-toastify';
 let isTvClicked = false;
 let isSoundPlying = false;
 
-const getAnotherElementById = (element, id) => {
-  return element.parent.children.filter((element) => element.attrs.id == id)[0]
+import {
+  LAMP_SIMULATE,
+  addToBackground,
+  getAnotherElementById,
+} from '../utils';
+
+
+const onDragEnd = (element) => {
+  const coil = getAnotherElementById(element, 'coil');
+  const magnet = getAnotherElementById(element, 'magnet');
+  if (Math.abs(coil.getX() - magnet.getX()) < 50 && Math.abs(coil.getY() - magnet.getY()) < 50) {
+    toast.success('بریم ببینیم با آهن‌ربا و سیم‌پیچ چیکار میشه کرد...')
+    setTimeout(() => {
+      window.location.href = `/${LAMP_SIMULATE}`;
+    }, 6000);
+  }
 }
 
-const showElementSoftly = (element, duration) => {
-  let cnt = 0;
-  const timer = setInterval(() => {
-    element.setOpacity(cnt / 100)
-    cnt++;
-  }, duration / 100)
-  setTimeout(() => {
-    clearInterval(timer)
-  }, duration + 100)
-}
-
-function playAudio(url) {
-  if (isSoundPlying) return
-  isSoundPlying = true;
-  const audio = new Audio(url)
-  audio.addEventListener('ended', () => { isSoundPlying = false; })
-  audio.play();
-}
-
-
-const Objects = [
+const Objects = (state, setState) => [
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room0/red-area.png',
-    id: "red-area",
-    x: 1758,
-    y: 860,
-    onClick: (e) => {
-      window.open("https://www.w3schools.com");
-    }
+    imageUrl: process.env.PUBLIC_URL + '/Room1/coil-toolbar.png',
+    id: "coil",
+    x: 500,
+    y: 930,
+    draggable: true,
+    onDragEnd: (e) => {
+      onDragEnd(e.target)
+    },
   },
-
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/magnet-toolbar.png',
+    id: "magnet",
+    x: 300,
+    y: 930,
+    draggable: true,
+    onDragEnd: (e) => {
+      onDragEnd(e.target)
+    },
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists.png',
+    id: "scientists-toolbar",
+    x: 700,
+    y: 930,
+    onClick: (e) => {
+      setState({
+        ...state,
+        showScientists: true,
+      })
+    },
+  },
 ]
 
 export default Objects;

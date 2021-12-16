@@ -21,7 +21,7 @@ const Index = () => {
 
   return (
     <>
-      <Scene backgroundImageLink={'/InsideBoxWithOffLamp/background.png'} objects={Objects(state, setState)} />
+      <Scene backgroundImageLink={'/Room1/off-lamp-background.png'} objects={Objects(state, setState)} />
       <Image
         image={'/Room1/scientists-big.png'}
         open={state?.showScientists}
