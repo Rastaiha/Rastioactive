@@ -38,7 +38,7 @@ const Index = () => {
       />
       <Password
         open={state?.showSignsDialog}
-        image={'/Room1/keypad-big.png'}
+        image={'/Room1/3signs-big.png'}
         handleClose={() => { setState({ ...state, showSignsDialog: !state.showSignsDialog }) }}
         callbackFunction={state?.signsCallback}
       />

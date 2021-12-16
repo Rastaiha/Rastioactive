@@ -11,6 +11,7 @@ import {
 
 let isMagnetPicked = false;
 let isCoilPicked = false;
+let isScientistsImagePicked = false;
 
 const Objects = (state, setState) => [
   {
@@ -117,19 +118,6 @@ const Objects = (state, setState) => [
   },
 
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists-toolbar.png',
-    id: "scientists-toolbar",
-    x: 100,
-    y: 2000,
-    visible: false,
-    onClick: (e) => {
-      setState({
-        ...state,
-        showScientistsImage: true,
-      })
-    },
-  },
-  {
     imageUrl: process.env.PUBLIC_URL + '/Room1/magnet-toolbar.png',
     id: "magnet-toolbar",
     x: 300,
@@ -149,7 +137,19 @@ const Objects = (state, setState) => [
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
     },
   },
-
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists-toolbar.png',
+    id: "scientists-toolbar",
+    x: 700,
+    y: 2000,
+    visible: false,
+    onClick: (e) => {
+      setState({
+        ...state,
+        showScientistsImage: true,
+      })
+    },
+  },
 ]
 
 export default Objects;

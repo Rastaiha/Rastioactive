@@ -1,7 +1,3 @@
-import React from 'react'
-import ObjectImage from './Object';
-import { allObjects } from './AllObjects';
-
 export const ROOM0_NAME = 'room0';
 export const ROOM1_NAME = 'room1';
 export const ROOM2_NAME = 'room2';
@@ -40,4 +36,17 @@ export const addToToolbar = (element) => {
   console.log(element)
   console.log(toolbarLayer)
   toolbarLayer.add(toolbarElement);
+}
+
+export const addToBackground = (element) => {
+  const id = element.attrs.id;
+  const toolbarElement = getAnotherElementById(element, id.substring(0, id.length - 8))
+  console.log(toolbarElement);
+
+  // toolbarElement.show()
+  // const toolbarLayer = element.parent.parent.children.filter((layer) => layer.attrs.id == 'toolbar')[0]
+  // element.hide()
+  // console.log(element)
+  // console.log(toolbarLayer)
+  // toolbarLayer.add(toolbarElement);
 }
