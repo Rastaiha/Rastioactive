@@ -10,13 +10,15 @@ import ObjectImage from './Object';
 const Index = ({
   backgroundImageLink = '/Room0/background.png',
   objects,
-  toolbarObjects = [],
 }) => {
   const history = useHistory();
   const height = window.innerHeight;
 
   const [backgroundImage] = useImage(process.env.PUBLIC_URL + backgroundImageLink);
   const scaleY = height / backgroundImage?.height;
+
+  const backgroundObject = objects.filter((object) => !object.id.endsWith('toolbar'));
+  const toolbarObjects = objects.filter((object) => object.id.endsWith('toolbar'));
 
   return (
     <Layout backgroundImage={backgroundImageLink}>
@@ -42,7 +44,7 @@ const Index = ({
             scaleY={scaleY}
             src={process.env.PUBLIC_URL + backgroundImageLink}
           />
-          {objects.map((object) =>
+          {backgroundObject.map((object) =>
             <ObjectImage key={object.id} scale={scaleY} {...object} />)
           }
         </Layer>

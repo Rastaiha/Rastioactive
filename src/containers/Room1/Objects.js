@@ -2,16 +2,12 @@ import { toast } from 'react-toastify';
 
 import {
   addToToolbar,
-  getAnotherElementById,
   INSIDE_BOX_WITH_OFF_LAMP,
-  ROOM1_NAME,
+  isItemPicked,
   ROOM2_NAME,
-  showElementSoftly
 } from '../utils';
 
-let isMagnetPicked = false;
-let isCoilPicked = false;
-let isScientistsImagePicked = false;
+console.log(!isItemPicked('book'))
 
 const Objects = (state, setState) => [
   {
@@ -34,14 +30,15 @@ const Objects = (state, setState) => [
       toast.info('احتمالاً احتمالاً‌ راه بازگشتی در کار نیست!')
     },
   },
+
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/book.png',
     id: "book",
     x: 340,
     y: 690,
     draggable: true,
+    visible: !isItemPicked("book"),
     onClick: (e) => {
-      isMagnetPicked = true;
       toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
@@ -52,8 +49,8 @@ const Objects = (state, setState) => [
     x: 3940,
     y: 690,
     draggable: true,
+    visible: !isItemPicked("magnet"),
     onClick: (e) => {
-      isMagnetPicked = true;
       toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
@@ -86,11 +83,22 @@ const Objects = (state, setState) => [
     x: 75,
     y: 922,
     draggable: true,
+    visible: !isItemPicked("coil"),
     onClick: (e) => {
-      isCoilPicked = true;
       toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists.png',
+    id: "scientists",
+    x: 730,
+    y: 1150,
+    visible: !isItemPicked('scientists'),
+    onClick: (e) => {
+      toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
+      addToToolbar(e.target)
+    },
   },
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/3signs.png',
@@ -98,7 +106,7 @@ const Objects = (state, setState) => [
     x: 3800,
     y: 1396,
     onClick: (e) => {
-      if (!isMagnetPicked || !isCoilPicked) {
+      if (!isItemPicked('magnet') || !isItemPicked('coil')) {
         toast.error('یکم بیشتر تو اتاق بگرد...');
         return;
       }
@@ -118,23 +126,13 @@ const Objects = (state, setState) => [
       })
     },
   },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists.png',
-    id: "scientists",
-    x: 730,
-    y: 1150,
-    onClick: (e) => {
-      toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
-      addToToolbar(e.target)
-    },
-  },
 
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/book-toolbar.png',
     id: "book-toolbar",
     x: 100,
     y: 2000,
-    visible: false,
+    visible: isItemPicked('book'),
     onClick: (e) => {
       //todo
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
@@ -145,7 +143,7 @@ const Objects = (state, setState) => [
     id: "scientists-toolbar",
     x: 300,
     y: 2000,
-    visible: false,
+    visible: isItemPicked('scientists'),
     onClick: (e) => {
       setState({
         ...state,
@@ -158,7 +156,7 @@ const Objects = (state, setState) => [
     id: "magnet-toolbar",
     x: 500,
     y: 2000,
-    visible: false,
+    visible: isItemPicked('magnet'),
     onClick: (e) => {
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
     },
@@ -168,7 +166,7 @@ const Objects = (state, setState) => [
     id: "coil-toolbar",
     x: 700,
     y: 2000,
-    visible: false,
+    visible: isItemPicked('coil'),
     onClick: (e) => {
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
     },

@@ -39,15 +39,12 @@ export const addToToolbar = (element) => {
   toolbarLayer.add(toolbarElement);
 }
 
-export const addToBackground = (element) => {
-  const id = element.attrs.id;
-  const toolbarElement = getAnotherElementById(element, id.substring(0, id.length - 8))
-  console.log(toolbarElement);
-
-  // toolbarElement.show()
-  // const toolbarLayer = element.parent.parent.children.filter((layer) => layer.attrs.id == 'toolbar')[0]
-  // element.hide()
-  // console.log(element)
-  // console.log(toolbarLayer)
-  // toolbarLayer.add(toolbarElement);
+export const isItemPicked = (id) => {
+  console.log(id, localStorage.getItem(id))
+  const status = localStorage.getItem(id)
+  console.log(status)
+  if (status == null) {
+    return false;
+  }
+  return true;
 }
