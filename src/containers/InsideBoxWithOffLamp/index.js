@@ -2,9 +2,8 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
+
 import Image from '../../components/Dialog/Image';
-
-
 import Scene from '../Scene';
 import Objects from './Objects';
 
@@ -26,6 +25,7 @@ const Index = () => {
         image={'/Room1/scientists-big.png'}
         open={state?.showScientists}
         handleClose={() => { setState({ ...state, showScientists: !state.showScientists }) }}
+        text={'Manhattan Project Scientists - 1944'}
       />
     </>
   );

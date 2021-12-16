@@ -22,38 +22,7 @@ const onDragEnd = (element) => {
 }
 
 const Objects = (state, setState) => [
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/coil-toolbar.png',
-    id: "coil",
-    x: 500,
-    y: 930,
-    draggable: true,
-    onDragEnd: (e) => {
-      onDragEnd(e.target)
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/magnet-toolbar.png',
-    id: "magnet",
-    x: 300,
-    y: 930,
-    draggable: true,
-    onDragEnd: (e) => {
-      onDragEnd(e.target)
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists.png',
-    id: "scientists-toolbar",
-    x: 700,
-    y: 930,
-    onClick: (e) => {
-      setState({
-        ...state,
-        showScientists: true,
-      })
-    },
-  },
+
 ]
 
 export default Objects;

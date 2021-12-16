@@ -3,8 +3,13 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
+import { toast } from 'react-toastify';
+import Video from '../../components/Dialog/Video';
 import Scene from '../Scene';
 import Objects from './Objects';
+import {
+  ROOM1_NAME,
+} from '../utils';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -15,9 +20,37 @@ const useStyles = makeStyles(() => ({
 const Index = () => {
   const history = useHistory();
   const classes = useStyles();
+  const [state, setState] = React.useState();
+
+  React.useEffect(() => {
+    toast.info('آیا می‌دانید نور با برخورد به پره‌های فتومتر، آن را به حرکت درمی‌آورد؟')
+    setTimeout(() => {
+      setState({
+        showPhotometerVideo: true,
+      })
+    }, 6000);
+
+    setTimeout(() => {
+      toast.info('پیشنهاد می‌کنم یک بار دیگه هم فیلم رو ببینی! عجله کن، ۳۰ ثانیه‌ی دیگه از جعبه خارج میشیم');
+    }, 25000);
+
+    setTimeout(() => {
+      toast.info('خب دیگه، از جعبه بریم بیرون...');
+    }, 55000);
+
+    setTimeout(() => {
+      window.location.href = `/${ROOM1_NAME}`;
+    }, 61000);
+  }, [])
 
   return (
-    <Scene backgroundImageLink={'/Room1/on-lamp-background.png'} objects={Objects} />
+    <>
+      <Scene backgroundImageLink={'/Room1/on-lamp-background.png'} objects={Objects(state, setState)} />
+      <Video
+        image={'/Room1/photometer.mp4'}
+        open={state?.showPhotometerVideo}
+      />
+    </>
   );
 };
 

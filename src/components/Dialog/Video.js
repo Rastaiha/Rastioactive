@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import {
   Button,
   ButtonGroup,
@@ -26,10 +27,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     width: '100%',
   },
-  image: {
+  media: {
     width: '100%',
-    // maxWidth: '400px',
-    // maxHeight: '400px',
+    borderRadius: '10px',
     objectFit: 'contain',
     [theme.breakpoints.down('xs')]: {
       maxWidth: '250px',
@@ -47,11 +47,15 @@ function Index({
 }) {
   const classes = useStyles();
   const image = inputImage || '/logo.png';
+  console.log(process.env.PUBLIC_URL + image)
+
   return (
     <Dialog open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
-          <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
+          <video className={classes.media} controls >
+            <source src={process.env.PUBLIC_URL + image} type="video/mp4" />
+          </video>
         </Grid>
       </DialogTitle>
       {text &&

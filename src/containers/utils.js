@@ -29,6 +29,7 @@ export const showElementSoftly = (element, duration) => {
 
 export const addToToolbar = (element) => {
   const id = element.attrs.id;
+  localStorage.setItem(id, true);
   const toolbarElement = getAnotherElementById(element, id + '-toolbar')
   toolbarElement.show()
   const toolbarLayer = element.parent.parent.children.filter((layer) => layer.attrs.id == 'toolbar')[0]

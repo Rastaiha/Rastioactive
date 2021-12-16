@@ -35,6 +35,18 @@ const Objects = (state, setState) => [
     },
   },
   {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/book.png',
+    id: "book",
+    x: 340,
+    y: 690,
+    draggable: true,
+    onClick: (e) => {
+      isMagnetPicked = true;
+      toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
+      addToToolbar(e.target)
+    }
+  },
+  {
     imageUrl: process.env.PUBLIC_URL + '/Room1/magnet.png',
     id: "magnet",
     x: 3940,
@@ -118,29 +130,20 @@ const Objects = (state, setState) => [
   },
 
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/magnet-toolbar.png',
-    id: "magnet-toolbar",
-    x: 300,
+    imageUrl: process.env.PUBLIC_URL + '/Room1/book-toolbar.png',
+    id: "book-toolbar",
+    x: 100,
     y: 2000,
     visible: false,
     onClick: (e) => {
-      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/coil-toolbar.png',
-    id: "coil-toolbar",
-    x: 500,
-    y: 2000,
-    visible: false,
-    onClick: (e) => {
+      //todo
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
     },
   },
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/scientists-toolbar.png',
     id: "scientists-toolbar",
-    x: 700,
+    x: 300,
     y: 2000,
     visible: false,
     onClick: (e) => {
@@ -150,6 +153,27 @@ const Objects = (state, setState) => [
       })
     },
   },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/magnet-toolbar.png',
+    id: "magnet-toolbar",
+    x: 500,
+    y: 2000,
+    visible: false,
+    onClick: (e) => {
+      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
+    },
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/coil-toolbar.png',
+    id: "coil-toolbar",
+    x: 700,
+    y: 2000,
+    visible: false,
+    onClick: (e) => {
+      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
+    },
+  },
+
 ]
 
 export default Objects;

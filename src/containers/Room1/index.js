@@ -3,10 +3,10 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import useImage from 'use-image';
 
-import Scene from '../Scene';
-import Objects from './Objects';
 import Image from '../../components/Dialog/Image';
 import Password from '../../components/Dialog/Password';
+import Scene from '../Scene';
+import Objects from './Objects';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -29,6 +29,7 @@ const Index = () => {
         image={'/Room1/scientists-big.png'}
         open={state?.showScientistsImage}
         handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
+        text={'Manhattan Project Scientists - 1944'}
       />
       <Password
         open={state?.showKeypadDialog}
