@@ -50,6 +50,7 @@ const Objects = [
     id: "wall1",
     x: 645,
     y: 850,
+    opacity: 0,
     onClick: (e) => {
       playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
     },
@@ -59,6 +60,7 @@ const Objects = [
     id: "wall2",
     x: 970,
     y: 850,
+    opacity: 0,
     onClick: (e) => {
       playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
     },
@@ -68,6 +70,7 @@ const Objects = [
     id: "wall3",
     x: 1290,
     y: 850,
+    opacity: 0,
     onClick: (e) => {
       playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
     },
@@ -77,6 +80,7 @@ const Objects = [
     id: "wall4",
     x: 1614,
     y: 850,
+    opacity: 0,
     onClick: (e) => {
       playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
     },
@@ -86,6 +90,7 @@ const Objects = [
     id: "wall5",
     x: 2255,
     y: 850,
+    opacity: 0,
     onClick: (e) => {
       playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
     },
@@ -95,6 +100,7 @@ const Objects = [
     id: "wall6",
     x: 2576,
     y: 850,
+    opacity: 0,
     onClick: (e) => {
       if (isSoundPlying) return;
       if (!isFakeDoorKnocked) {
@@ -114,6 +120,7 @@ const Objects = [
     id: "wall7",
     x: 2898,
     y: 850,
+    opacity: 0,
     onClick: (e) => {
       playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
     },
