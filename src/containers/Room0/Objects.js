@@ -1,6 +1,10 @@
 import { toast } from 'react-toastify';
 
-import { getAnotherElementById, ROOM1_NAME, showElementSoftly } from '../utils';
+import {
+  getAnotherElementById,
+  ROOM1_NAME,
+  showElementSoftly,
+} from '../utils';
 
 let isTvClicked = false;
 let isSoundPlying = false;

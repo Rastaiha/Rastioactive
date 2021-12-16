@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: '100%',
     // maxWidth: '400px',
-    // maxHeight: '400px',
+    maxHeight: '600px',
     objectFit: 'contain',
     [theme.breakpoints.down('xs')]: {
-      maxWidth: '250px',
-      maxHeight: '250px',
+      // maxWidth: '250px',
+      maxHeight: '300px',
       width: '100%',
     }
   }
@@ -48,7 +48,7 @@ function Index({
   const classes = useStyles();
   const image = inputImage || '/logo.png';
   return (
-    <Dialog open={open} onClose={handleClose} PaperComponent='false'>
+    <Dialog maxWidth='lg' open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
           <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />

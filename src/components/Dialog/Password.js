@@ -50,19 +50,20 @@ function Index({
   handleClose,
   callbackFunction = () => { },
 
-  image: inputImage,
+  image,
 }) {
   const classes = useStyles();
-  const image = inputImage || '/logo.png';
   const [inputText, setInputText] = React.useState();
 
   return (
     <Dialog maxWidth="xs" open={open} onClose={handleClose} PaperComponent='false'>
-      <DialogTitle>
-        <Grid container spacing={2} justify='center'>
-          <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
-        </Grid>
-      </DialogTitle>
+      {image &&
+        <DialogTitle>
+          <Grid container spacing={2} justify='center'>
+            <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
+          </Grid>
+        </DialogTitle>
+      }
       <DialogActions>
         <Grid container component={Paper} direction='column' spacing={2} justify='center'>
           <Grid item>

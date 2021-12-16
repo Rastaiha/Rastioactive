@@ -22,7 +22,7 @@ export const showElementSoftly = (element, duration) => {
     element.setOpacity(cnt / 100)
     console.log(cnt)
     cnt += 5;
-  }, duration / 40)
+  }, duration / 60)
   setTimeout(() => {
     clearInterval(timer)
   }, duration)

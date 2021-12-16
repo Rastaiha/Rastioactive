@@ -26,15 +26,14 @@ const Index = () => {
         backgroundImageLink={'/Room3/background.png'}
         objects={Objects(state, setState)} />
       <Image
-        image={'/Room3/mazz.png'}
+        image={'/Room3/maze.png'}
         open={state?.showMazeImage}
         handleClose={() => { setState({ ...state, showMazeImage: !state.showMazeImage }) }}
       />
       <Password
-        open={state?.showKeypadDialog}
-        image={'/Room1/keypad-big.png'}
-        handleClose={() => { setState({ ...state, showKeypadDialog: !state.showKeypadDialog }) }}
-        callbackFunction={state?.keypadCallback}
+        open={state?.showWindowDialog}
+        handleClose={() => { setState({ ...state, showWindowDialog: !state.showWindowDialog }) }}
+        callbackFunction={state?.windowDoorCallback}
       />
       <Password
         open={state?.showSignsDialog}
