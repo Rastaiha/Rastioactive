@@ -56,7 +56,13 @@ const Objects = (state, setState) => [
     x: 220,
     y: 1250,
     onClick: () => {
-      setState({ ...state, showScientists: true })
+      setState({
+        ...state,
+        showKeypad: true,
+        keypadCallback: (inputText) => {
+          toast.success(inputText)
+        },
+      })
     }
   },
   {
@@ -76,7 +82,6 @@ const Objects = (state, setState) => [
     x: 3800,
     y: 1396,
     onClick: (e) => {
-      setState({ ...state, showScientists: true })
     },
   },
   {
@@ -97,7 +102,10 @@ const Objects = (state, setState) => [
     y: 2000,
     visible: false,
     onClick: (e) => {
-      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
+      setState({
+        ...state,
+        showScientists: true,
+      })
     },
   },
   {

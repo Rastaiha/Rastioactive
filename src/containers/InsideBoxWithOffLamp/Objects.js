@@ -27,47 +27,38 @@ function playAudio(url) {
 }
 
 
-const Objects = [
+const Objects = (state, setState) => [
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room0/red-area.png',
-    id: "red-area",
-    x: 1758,
-    y: 860,
-    isHover: false,
-    opacity: 0,
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room0/scan-monitor.png',
-    id: "monitor",
-    x: 3275,
-    y: 650,
-    isHover: false,
-    opacity: 0,
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room0/tv.png',
-    id: "121",
-    x: 1930,
-    y: 575,
-    isHover: false,
+    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists-toolbar.png',
+    id: "scientists-toolbar",
+    x: 90,
+    y: 930,
+    // visible: false,
     onClick: (e) => {
-      if (isTvClicked) return;
-      toast.error("هشدار! ماده‌ای رادیو اکتیو خارج از محیط آزمایش یافت شد!")
-      isTvClicked = true;
-      const redArea = getAnotherElementById(e.target, "red-area");
-      const monitor = getAnotherElementById(e.target, "monitor");
-      showElementSoftly(redArea, 2000);
-      showElementSoftly(monitor, 1000);
+      setState({
+        ...state,
+        showScientists: true,
+      })
     },
   },
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room0/layer-wall.png',
-    id: "1821",
-    x: 1030,
-    y: 575,
-    isHover: false,
+    imageUrl: process.env.PUBLIC_URL + '/Room1/magnet-toolbar.png',
+    id: "magnet-toolbar",
+    x: 240,
+    y: 930,
+    // visible: false,
     onClick: (e) => {
-      playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
+      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
+    },
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/coil-toolbar.png',
+    id: "coil-toolbar",
+    x: 400,
+    y: 930,
+    // visible: false,
+    onClick: (e) => {
+      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
     },
   },
 ]

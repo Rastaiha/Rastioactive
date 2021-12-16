@@ -15,11 +15,6 @@ import {
   Zoom,
 } from '@material-ui/core';
 import React from 'react';
-import { useParams } from 'react-router'
-
-import {
-  getProblemFromGroupAction,
-} from '../../redux/slices/problem'
 
 const useStyles = makeStyles((theme) => ({
   description: {
@@ -33,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     width: '100%',
-    maxWidth: '300px',
-    maxHeight: '300px',
+    maxWidth: '400px',
+    maxHeight: '400px',
     objectFit: 'contain',
     [theme.breakpoints.down('xs')]: {
       maxWidth: '250px',
@@ -47,25 +42,26 @@ const useStyles = makeStyles((theme) => ({
 function Index({
   open,
   handleClose,
-
   image: inputImage,
 }) {
   const classes = useStyles();
-  const { problemGroupId, problemId, submitId } = useParams();
-  const [image, setImage] = React.useState(inputImage || '/logo.png');
-
+  const image = inputImage || '/logo.png';
   return (
-    <Dialog maxWidth="xs" open={open} onClose={handleClose} PaperComponent='false'>
+    <Dialog open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
-        <Paper style={{ padding: 20 }}>
-          <Grid container spacing={2} justify='center'>
-            <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
-          </Grid>
-          <Grid item>
-            {'نیم‌خط، گاه‌نامه‌ی رستاست. شماره‌ی ۱ نیم‌خط رو ببینید.'}
-          </Grid>
-        </Paper>
+        <Grid container spacing={2} justify='center'>
+          <img className={classes.image} alt='' src={process.env.PUBLIC_URL + image} />
+        </Grid>
       </DialogTitle>
+      <DialogActions>
+        <Grid container component={Paper} direction='column' spacing={2} justify='center'>
+          <Grid item>
+            <Typography variant='h2' align='center'>
+              {'Manhattan Project Scientists - 1944'}
+            </Typography>
+          </Grid>
+        </Grid>
+      </DialogActions>
     </Dialog >
   );
 }

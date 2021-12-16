@@ -5,7 +5,8 @@ import useImage from 'use-image';
 
 import Scene from '../Scene';
 import Objects from './Objects';
-import Message from '../../components/Dialog/Message';
+import Image from '../../components/Dialog/Image';
+import Password from '../../components/Dialog/Password';
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -26,9 +27,16 @@ const Index = () => {
         showScientistsDialog
         backgroundImageLink={'/Room1/background.png'}
         objects={Objects(state, setState)} />
-      <Message
+      <Image
+        image={'/Room1/scientists-big.png'}
         open={state?.showScientists}
         handleClose={() => { setState({ ...state, showScientists: !state.showScientists }) }}
+      />
+      <Password
+        open={state?.showKeypad}
+        image={'/Room1/keypad-big.png'}
+        handleClose={() => { setState({ ...state, showKeypad: !state.showKeypad }) }}
+        callbackFunction={state?.keypadCallback}
       />
     </>
   );

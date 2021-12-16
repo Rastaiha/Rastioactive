@@ -11,6 +11,7 @@ import {
   makeStyles,
   Paper,
   Slide,
+  TextField,
   Typography,
   Zoom,
 } from '@material-ui/core';
@@ -47,14 +48,13 @@ const useStyles = makeStyles((theme) => ({
 function Index({
   open,
   handleClose,
-  callbackFunction,
+  callbackFunction = () => { },
 
-  text: inputText,
   image: inputImage,
 }) {
   const classes = useStyles();
-  const [image, setImage] = React.useState(inputImage || '/logo.png');
-  const [text, setText] = React.useState(inputText || 'آیا مطمئن هستید؟');
+  const image = inputImage || '/logo.png';
+  const [inputText, setInputText] = React.useState();
 
   return (
     <Dialog maxWidth="xs" open={open} onClose={handleClose} PaperComponent='false'>
@@ -66,19 +66,12 @@ function Index({
       <DialogActions>
         <Grid container component={Paper} direction='column' spacing={2} justify='center'>
           <Grid item>
-            <Typography>
-              {text}
-            </Typography>
+            <TextField onChange={(e) => setInputText(e.target.value)} fullWidth variant='outlined' label='بزن رمزو!' />
           </Grid>
           <Grid item>
-            <Typography>
-              {text}
-            </Typography>
-          </Grid>
-          <Grid item container justify='center' alignItems='center'>
             <Button fullWidth variant='contained' color='primary'
-              onClick={() => { callbackFunction(); handleClose(); }}>
-              {'تایید'}
+              onClick={() => { callbackFunction(inputText); handleClose(); }}>
+              {'ثبت'}
             </Button>
           </Grid>
         </Grid>
