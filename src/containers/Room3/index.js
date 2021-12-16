@@ -23,13 +23,12 @@ const Index = () => {
     <>
       <Scene
         showScientistsDialog
-        backgroundImageLink={'/Room1/background.png'}
+        backgroundImageLink={'/Room3/background.png'}
         objects={Objects(state, setState)} />
       <Image
-        image={'/Room1/scientists-big.png'}
-        open={state?.showScientistsImage}
-        handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
-        text={'Manhattan Project Scientists - 1944'}
+        image={'/Room3/mazz.png'}
+        open={state?.showMazeImage}
+        handleClose={() => { setState({ ...state, showMazeImage: !state.showMazeImage }) }}
       />
       <Password
         open={state?.showKeypadDialog}

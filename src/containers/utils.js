@@ -20,11 +20,12 @@ export const showElementSoftly = (element, duration) => {
   let cnt = 0;
   const timer = setInterval(() => {
     element.setOpacity(cnt / 100)
-    cnt++;
-  }, duration / 100)
+    console.log(cnt)
+    cnt += 5;
+  }, duration / 40)
   setTimeout(() => {
     clearInterval(timer)
-  }, duration + 100)
+  }, duration)
 }
 
 export const addToToolbar = (element) => {
