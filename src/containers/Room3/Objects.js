@@ -19,10 +19,10 @@ const checkPlaceAdasisInCorrectPlaces = (e) => {
   if (areAdasisPlacedInCorrectPlaces) return;
   const adasi1 = getAnotherElementById(e.target, 'adasi-amoodi1');
   const adasi2 = getAnotherElementById(e.target, 'adasi-amoodi2');
-  const firstPoint = { x: 811, y: 573 };
-  const secondPoint = { x: 415, y: 567 };
-  if ((isElementNearPoint(adasi1, firstPoint) && isElementNearPoint(adasi2, secondPoint)) ||
-    (isElementNearPoint(adasi1, secondPoint) && isElementNearPoint(adasi2, firstPoint))) {
+  const point31 = getAnotherElementById(e.target, 'point31');
+  const point32 = getAnotherElementById(e.target, 'point32');
+  if ((areTwoElementsNear(adasi1, point31) && areTwoElementsNear(adasi2, point32)) ||
+    (areTwoElementsNear(adasi1, point32) && areTwoElementsNear(adasi2, point31))) {
     toast.success('بزن زنگو!');
     areAdasisPlacedInCorrectPlaces = true;
     const laserObject = getAnotherElementById(e.target, "laser");
@@ -36,6 +36,7 @@ const checkPlaceAdasisInCorrectPlaces = (e) => {
 }
 
 const Objects = (state, setState) => [
+  ...points,
   {
     imageUrl: process.env.PUBLIC_URL + '/Room3/maze-layer.png',
     id: "maze-layer",
@@ -165,6 +166,23 @@ const Objects = (state, setState) => [
     }
   },
   ...toolbarObjects(state, setState),
+]
+
+const points = [
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/point.png',
+    id: "point31",
+    x: 1200,
+    y: 920,
+    visible: false,
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room3/point.png',
+    id: "point32",
+    x: 660,
+    y: 900,
+    visible: false,
+  },
 ]
 
 export default Objects;

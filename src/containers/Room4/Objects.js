@@ -128,21 +128,4 @@ const Objects = (state, setState) => [
 
 ]
 
-const points = [
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room3/point.png',
-    id: "pint31",
-    x: 700,
-    y: 2000,
-    visible: false,
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room3/point.png',
-    id: "pint31",
-    x: 1000,
-    y: 2000,
-    visible: false,
-  },
-]
-
 export default Objects;
