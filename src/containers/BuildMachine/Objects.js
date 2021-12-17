@@ -5,6 +5,7 @@ let isSoundPlying = false;
 
 import {
   addToBackground,
+  areTwoElementsNear,
   getAnotherElementById,
   isElementNearPoint,
   LAMP_SIMULATE,
@@ -13,37 +14,10 @@ import {
 
 
 const onDragEnd = (element, state, setState) => {
-  console.log(element.getX(), ' --- ', element.getY())
-  let points = [
-    {}, {},
-    {
-      x: 754,
-      y: 428,
-    },
-    {
-      x: 666,
-      y: 545
-    },
-    {
-      x: 804,
-      y: 479,
-    },
-    {
-      x: 908,
-      y: 542,
-    },
-    {
-      x: 1067,
-      y: 466,
-    },
-    {
-      x: 1179,
-      y: 446,
-    }
-  ];
   for (let i = 2; i <= 7; i++) {
     const piece = getAnotherElementById(element, `piece${i}`);
-    if (!isElementNearPoint(piece, points[i])) {
+    const point = getAnotherElementById(element, `point${i}`);
+    if (!areTwoElementsNear(piece, point)) {
       return;
     }
   }
@@ -63,6 +37,7 @@ const onDragEnd = (element, state, setState) => {
 }
 
 const Objects = (state, setState) => [
+  ...points,
   {
     imageUrl: process.env.PUBLIC_URL + '/BuildMachine/piece1.png',
     id: "piece1",
@@ -132,6 +107,81 @@ const Objects = (state, setState) => [
       onDragEnd(e.target, state, setState);
     }
   },
+  ...points,
+]
+
+const points = [
+  {
+    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/point.png',
+    id: "point2",
+    x: 1644,
+    y: 888,
+    visible: false,
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/point.png',
+    id: "point3",
+    x: 1404,
+    y: 1118,
+    visible: false,
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/point.png',
+    id: "point4",
+    x: 1704,
+    y: 948,
+    visible: false,
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/point.png',
+    id: "point5",
+    x: 1944,
+    y: 1148,
+    visible: false,
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/point.png',
+    id: "point6",
+    x: 2244,
+    y: 1000,
+    visible: false,
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/point.png',
+    id: "point7",
+    x: 2450,
+    y: 940,
+    visible: false,
+  },
 ]
 
 export default Objects;
+
+
+// let points = [
+//   {}, {},
+//   {
+//     x: 754,
+//     y: 428,
+//   },
+//   {
+//     x: 666,
+//     y: 545
+//   },
+//   {
+//     x: 804,
+//     y: 479,
+//   },
+//   {
+//     x: 908,
+//     y: 542,
+//   },
+//   {
+//     x: 1067,
+//     y: 466,
+//   },
+//   {
+//     x: 1179,
+//     y: 446,
+//   }
+// ]
