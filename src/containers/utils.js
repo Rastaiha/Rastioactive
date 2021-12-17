@@ -45,7 +45,7 @@ export const showElementSoftly = (element, duration) => {
 
 export const addToToolbar = (element) => {
   const id = element.attrs.id;
-  localStorage.setItem(id, true);
+  localStorage.setItem(id, '1');
   const toolbarElement = getAnotherElementById(element, id + '-toolbar')
   if (!toolbarElement) {
     toast.error('خطا!');
@@ -58,7 +58,7 @@ export const addToToolbar = (element) => {
 export const getFromToolbar = (element) => {
   let id = element.attrs.id;
   id = id.substring(0, id.length - 8);
-  localStorage.setItem(id, false);
+  localStorage.setItem(id, '0');
   const backgroundElement = getAnotherElementById(element, id)
   if (!backgroundElement) {
     toast.error('خطا!');
@@ -70,7 +70,7 @@ export const getFromToolbar = (element) => {
 
 export const isItemPicked = (id) => {
   const status = localStorage.getItem(id);
-  if (status == 'false' || status == null) {
+  if (status == '0' || status == null) {
     return false;
   }
   return true;

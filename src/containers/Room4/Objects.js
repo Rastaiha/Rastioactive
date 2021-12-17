@@ -7,7 +7,6 @@ import {
   ROOM2_NAME,
 } from '../utils';
 
-console.log(!isItemPicked('book'))
 
 const Objects = (state, setState) => [
   {
