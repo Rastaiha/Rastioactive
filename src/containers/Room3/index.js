@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import useImage from 'use-image';
 
 import Image from '../../components/Dialog/Image';
 import Password from '../../components/Dialog/Password';
@@ -9,9 +8,6 @@ import Scene from '../Scene';
 import Objects from './Objects';
 
 const useStyles = makeStyles(() => ({
-  fullHeight: {
-    minHeight: '100vh',
-  },
 }));
 
 const Index = () => {
@@ -34,12 +30,6 @@ const Index = () => {
         open={state?.showWindowDialog}
         handleClose={() => { setState({ ...state, showWindowDialog: !state.showWindowDialog }) }}
         callbackFunction={state?.windowDoorCallback}
-      />
-      <Password
-        open={state?.showSignsDialog}
-        image={'/Room1/3signs-big.png'}
-        handleClose={() => { setState({ ...state, showSignsDialog: !state.showSignsDialog }) }}
-        callbackFunction={state?.signsCallback}
       />
     </>
   );

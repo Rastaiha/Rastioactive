@@ -5,14 +5,15 @@ import useImage from 'use-image';
 
 const Index = ({
   imageUrl,
-  x, y,
-  scale,
-  rotation,
+  x: inputX,
+  y: inputY,
+  handyScale,
+  scale: inputScale,
   isHover,
   disabled,
+  onClick,
   onMouseEnter,
   onMouseLeave,
-  onClick,
   ...props
 }) => {
   const [image] = useImage(imageUrl);
@@ -21,32 +22,32 @@ const Index = ({
     return (<></>)
   }
 
+  let scale = inputScale || 1;
+  const [x, y] = [inputX * scale, inputY * scale];
+
+  if (handyScale) {
+    scale *= handyScale;
+  }
+
   return (
     <Image
+      {...props}
       image={image}
       offsetX={image.width / 2}
       offsetY={image.height / 2}
-      {...props}
-      x={x * scale}
-      y={y * scale}
-      rotation={rotation}
-      shadowColor="black"
-      shadowBlur={10}
-      shadowOpacity={0.6}
-      shadowOffsetX={(isHover && !disabled) ? 10 : 5}
-      shadowOffsetY={(isHover && !disabled) ? 10 : 5}
+      x={x}
+      y={y}
       scaleX={(isHover && !disabled) ? scale + 0.03 : scale}
       scaleY={(isHover && !disabled) ? scale + 0.03 : scale}
-
-      onTap={(e) => {
-        onMouseEnter(e);
-        setTimeout(() => {
-          onMouseLeave(e);
-        }, [200])
-      }}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-
+      //todo: every object is disabled, expect declared ones
+      onTap={!disabled
+        ? () => onClick()
+        : (e) => {
+          onMouseEnter(e);
+          setTimeout(() => {
+            onMouseLeave(e);
+          }, [200])
+        }}
       onDblTap={onClick}
       onClick={onClick}
     />

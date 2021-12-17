@@ -1,15 +1,11 @@
 import { toast } from 'react-toastify';
 
 import {
-  addToToolbar,
   areTwoElementsNear,
   getAnotherElementById,
-  INSIDE_BOX_WITH_OFF_LAMP,
   isElementNearPoint,
-  isItemPicked,
-  ROOM2_NAME,
-  showElementSoftly,
   ROOM4_NAME,
+  showElementSoftly,
 } from '../utils';
 
 let isWW2Clear = false;
@@ -82,7 +78,6 @@ const Objects = (state, setState) => [
     draggable: true,
     onDragEnd: (e) => {
       checkPlaceAdasisInCorrectPlaces(e);
-      console.log(e.target.getX(), e.target.getY())
     }
   },
   {
@@ -93,7 +88,6 @@ const Objects = (state, setState) => [
     draggable: true,
     onDragEnd: (e) => {
       checkPlaceAdasisInCorrectPlaces(e);
-      console.log(e.target.getX(), e.target.getY())
     }
   },
   {
@@ -166,10 +160,11 @@ const toolbarItems = [
   {
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/glass-toolbar.png',
     id: 'glass-toolbar',
-    x: 1000,
-    y: 900,
+    x: 100,
+    y: 1500,
     draggable: true,
   },
+
 ]
 
 export default Objects;

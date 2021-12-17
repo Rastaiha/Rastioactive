@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const ROOM0_NAME = 'room0';
 export const ROOM1_NAME = 'room1';
 export const ROOM2_NAME = 'room2';
@@ -34,7 +36,6 @@ export const showElementSoftly = (element, duration) => {
   let cnt = 0;
   const timer = setInterval(() => {
     element.setOpacity(cnt / 100)
-    console.log(cnt)
     cnt += 5;
   }, duration / 60)
   setTimeout(() => {
@@ -46,19 +47,30 @@ export const addToToolbar = (element) => {
   const id = element.attrs.id;
   localStorage.setItem(id, true);
   const toolbarElement = getAnotherElementById(element, id + '-toolbar')
+  if (!toolbarElement) {
+    toast.error('خطا!');
+    return;
+  }
   toolbarElement.show()
-  const toolbarLayer = element.parent.parent.children.filter((layer) => layer.attrs.id == 'toolbar')[0]
   element.hide()
-  console.log(element)
-  console.log(toolbarLayer)
-  toolbarLayer.add(toolbarElement);
+}
+
+export const getFromToolbar = (element) => {
+  let id = element.attrs.id;
+  id = id.substring(0, id.length - 8);
+  localStorage.setItem(id, false);
+  const backgroundElement = getAnotherElementById(element, id)
+  if (!backgroundElement) {
+    toast.error('خطا!');
+    return;
+  }
+  backgroundElement.show()
+  element.hide()
 }
 
 export const isItemPicked = (id) => {
-  console.log(id, localStorage.getItem(id))
-  const status = localStorage.getItem(id)
-  console.log(status)
-  if (status == null) {
+  const status = localStorage.getItem(id);
+  if (status == 'false' || status == null) {
     return false;
   }
   return true;

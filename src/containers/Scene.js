@@ -13,6 +13,7 @@ const Index = ({
 }) => {
   const history = useHistory();
   const height = window.innerHeight;
+  const width = window.innerWidth;
 
   const [backgroundImage] = useImage(process.env.PUBLIC_URL + backgroundImageLink);
   const scaleY = height / backgroundImage?.height;
@@ -23,17 +24,17 @@ const Index = ({
   return (
     <Layout backgroundImage={backgroundImageLink}>
       <Stage
-        width={Math.min(backgroundImage?.width * scaleY, window.innerWidth)}
+        width={Math.min(backgroundImage?.width * scaleY, width)}
         height={height}>
         <Layer
           id='background'
           draggable
           dragBoundFunc={(pos) => {
             pos.y = 0;
-            if (window.innerWidth < backgroundImage?.width * scaleY) {
+            if (width < backgroundImage?.width * scaleY) {
               if (pos.x > 0) pos.x = 0;
-              if (pos.x < window.innerWidth - backgroundImage?.width * scaleY)
-                pos.x = window.innerWidth - backgroundImage?.width * scaleY;
+              if (pos.x < width - backgroundImage?.width * scaleY)
+                pos.x = width - backgroundImage?.width * scaleY;
             } else {
               pos.x = 0;
             }
@@ -48,9 +49,9 @@ const Index = ({
             <ObjectImage key={object.id} scale={scaleY} {...object} />)
           }
         </Layer>
-        <Layer id='toolbar' width={window.innerWidth} height={height} >
+        <Layer id='toolbar' width={width} height={height} >
           {toolbarObjects.map((object) =>
-            <ObjectImage key={object.id} scale={scaleY} {...object} />)
+            <ObjectImage key={object.id} scale={0.47} {...object} />)
           }
         </Layer>
       </Stage>

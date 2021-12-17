@@ -39,7 +39,7 @@ const Objects = (state, setState) => [
     draggable: true,
     visible: !isItemPicked("book"),
     onClick: (e) => {
-      toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
+      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
   },
@@ -51,7 +51,7 @@ const Objects = (state, setState) => [
     draggable: true,
     visible: !isItemPicked("magnet"),
     onClick: (e) => {
-      toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
+      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
   },
@@ -85,7 +85,7 @@ const Objects = (state, setState) => [
     draggable: true,
     visible: !isItemPicked("coil"),
     onClick: (e) => {
-      toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
+      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
       addToToolbar(e.target)
     }
   },
@@ -96,7 +96,7 @@ const Objects = (state, setState) => [
     y: 1150,
     visible: !isItemPicked('scientists'),
     onClick: (e) => {
-      toast.success('احسنت! چیز به درد بخوری پیدا کردی.');
+      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
       addToToolbar(e.target)
     },
   },

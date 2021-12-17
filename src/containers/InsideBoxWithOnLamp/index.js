@@ -23,7 +23,7 @@ const Index = () => {
   const [state, setState] = React.useState();
 
   React.useEffect(() => {
-    toast.info('آیا می‌دانید نور با برخورد به پره‌های فتومتر، آن را به حرکت درمی‌آورد؟')
+    toast.info('آیا می‌دانید نور با برخورد به پره‌های الکترومتر، آن را به حرکت درمی‌آورد؟')
     setTimeout(() => {
       setState({
         showPhotometerVideo: true,
