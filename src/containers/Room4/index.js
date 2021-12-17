@@ -23,7 +23,7 @@ const Index = () => {
     <>
       <Scene
         showScientistsDialog
-        backgroundImageLink={'/Room1/background.png'}
+        backgroundImageLink={'/Room4/background.png'}
         objects={Objects(state, setState)} />
       <Image
         image={'/Room1/scientists-big.png'}

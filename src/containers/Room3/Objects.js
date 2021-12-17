@@ -148,6 +148,9 @@ const Objects = (state, setState) => [
     y: 1000,
     draggable: true,
     visible: !isItemPicked('glass'),
+    onClick: (e) => {
+      addToToolbar(e.target);
+    },
     onDragEnd: (e) => {
       if (isWW2Clear) return;
       const ww2 = getAnotherElementById(e.target, 'ww2');
