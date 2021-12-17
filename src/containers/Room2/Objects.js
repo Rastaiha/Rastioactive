@@ -172,7 +172,7 @@ const books = (state, setState) => [
     handyScale: 3,
     visible: false,
     onClick: (e) => {
-      toast.success("green")
+      window.open('https://drive.google.com/file/d/1ACQpwjaopcphxYne4NTPkp8K7aZT3enh/view?usp=sharing')
     }
   },
   {
@@ -183,7 +183,7 @@ const books = (state, setState) => [
     handyScale: 3,
     visible: false,
     onClick: (e) => {
-      toast.success("blue")
+      window.open('https://drive.google.com/file/d/1aimIZo99mkXUzjFjZLWtNK8H3HS-dTHP/view?usp=sharing');
     }
   },
   {
@@ -194,7 +194,7 @@ const books = (state, setState) => [
     handyScale: 3,
     visible: false,
     onClick: (e) => {
-      toast.success("red")
+      window.open('https://drive.google.com/file/d/1dOXfoMYB8QeUbWg0RBm82k97gGHM0gsV/view?usp=sharing');
     }
   },
 ]

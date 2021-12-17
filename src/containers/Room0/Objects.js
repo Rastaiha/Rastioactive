@@ -113,7 +113,7 @@ const Objects = [
         isFakeDoorKnocked = true;
         playAudio(process.env.PUBLIC_URL + '/Room0/bang2.mp3');
       } else {
-        toast.info("اوه! بذار ببینم پشت اینجا چیه...");
+        toast.success("اوه! بذار ببینم پشت اینجا چیه...");
         playAudio(process.env.PUBLIC_URL + '/Room0/bang2.mp3');
         setTimeout(() => {
           window.location.href = `/${ROOM1_NAME}`;

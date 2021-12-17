@@ -5,6 +5,7 @@ import {
   areTwoElementsNear,
   getAnotherElementById,
   isElementNearPoint,
+  ROOM1_NAME,
   ROOM4_NAME,
   showElementSoftly,
 } from '../utils';
@@ -26,7 +27,7 @@ const checkPlaceAdasisInCorrectPlaces = (e) => {
     laserObject.show();
     showElementSoftly(laserObject, 2000);
     setTimeout(() => {
-      window.location.href = `/${ROOM4_NAME}`;
+      window.location.href = `/${ROOM1_NAME}`;
     }, 6000);
   }
 
