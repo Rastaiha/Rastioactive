@@ -54,7 +54,7 @@ export const addToToolbar = (element) => {
   const id = element.attrs.id;
   const toolbarElement = getAnotherElementById(element, id + '-toolbar')
   if (!toolbarElement) {
-    toast.info('ولش کن، به درد نمی‌خوره.');
+    toast.info('ولش کن، اینجا به درد نمی‌خوره.');
     return;
   }
   localStorage.setItem(id, '1');
@@ -67,7 +67,7 @@ export const getFromToolbar = (element) => {
   id = id.substring(0, id.length - 8);
   const backgroundElement = getAnotherElementById(element, id)
   if (!backgroundElement) {
-    toast.info('ولش کن، به درد نمی‌خوره.');
+    toast.info('ولش کن، اینجا به درد نمی‌خوره.');
     return;
   }
   localStorage.setItem(id, '0');

@@ -30,10 +30,11 @@ const useStyles = makeStyles((theme) => ({
   media: {
     width: '100%',
     borderRadius: '10px',
+    maxHeight: '600px',
     objectFit: 'contain',
     [theme.breakpoints.down('xs')]: {
-      maxWidth: '250px',
-      maxHeight: '250px',
+      // maxWidth: '250px',
+      maxHeight: '300px',
       width: '100%',
     }
   }
@@ -50,7 +51,7 @@ function Index({
   console.log(process.env.PUBLIC_URL + image)
 
   return (
-    <Dialog open={open} onClose={handleClose} PaperComponent='false'>
+    <Dialog maxWidth='lg' open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
           <video className={classes.media} controls >

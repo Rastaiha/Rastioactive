@@ -33,6 +33,8 @@ const Objects = (state, setState) => [
               setTimeout(() => {
                 window.location.href = `/${ROOM3_NAME}`;
               }, 6000);
+            } else {
+              toast.error('شوبخیر!');
             }
           }
         })
