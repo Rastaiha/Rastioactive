@@ -22,7 +22,9 @@ const checkPlaceAdasisInCorrectPlaces = (e) => {
     (isElementNearPoint(adasi1, secondPoint) && isElementNearPoint(adasi2, firstPoint))) {
     toast.success('بزن زنگو!');
     areAdasisPlacedInCorrectPlaces = true;
-    showElementSoftly(getAnotherElementById(e.target, "laser"), 2000);
+    const laserObject = getAnotherElementById(e.target, "laser");
+    laserObject.show();
+    showElementSoftly(laserObject, 2000);
     setTimeout(() => {
       window.location.href = `/${ROOM4_NAME}`;
     }, 6000);
@@ -107,6 +109,7 @@ const Objects = (state, setState) => [
     x: 890,
     y: 893,
     opacity: 0,
+    visible: false,
   },
 
   {

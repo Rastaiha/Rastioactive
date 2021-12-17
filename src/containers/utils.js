@@ -20,17 +20,23 @@ export const getAnotherElementById = (element, id) => {
 }
 
 export const areTwoElementsNear = (elem1, elem2) => {
-  if (Math.abs(elem1.getX() - elem2.getX()) < 50 && Math.abs(elem1.getY() - elem2.getY()) < 50) {
+  if (Math.abs(elem1.getX() - elem2.getX()) < 100 && Math.abs(elem1.getY() - elem2.getY()) < 100) {
     return true;
   }
   return false;
 }
 
 export const isElementNearPoint = (elem, point) => {
-  if (Math.abs(elem.getX() - point.x) < 50 && Math.abs(elem.getY() - point.y) < 50) {
+  if (Math.abs(elem.getX() - point.x) < 100 && Math.abs(elem.getY() - point.y) < 100) {
     return true;
   }
   return false;
+}
+
+export const updateLayers = (element) => {
+  return element.parent.parent.children.forEach(layer => {
+    layer.draw();
+  });
 }
 
 export const showElementSoftly = (element, duration) => {
@@ -48,12 +54,13 @@ export const addToToolbar = (element) => {
   const id = element.attrs.id;
   const toolbarElement = getAnotherElementById(element, id + '-toolbar')
   if (!toolbarElement) {
-    toast.error('خطا!');
+    toast.info('ولش کن، به درد نمی‌خوره.');
     return;
   }
   localStorage.setItem(id, '1');
   toolbarElement.show()
-  element.hide()
+  element.hide();
+  updateLayers(element);
 }
 
 export const getFromToolbar = (element) => {
@@ -61,16 +68,14 @@ export const getFromToolbar = (element) => {
   id = id.substring(0, id.length - 8);
   const backgroundElement = getAnotherElementById(element, id)
   if (!backgroundElement) {
-    toast.error('خطا!');
+    toast.info('ولش کن، به درد نمی‌خوره.');
     return;
   }
   localStorage.setItem(id, '0');
-  backgroundElement.show()
-  element.hide()
-}
 
-export const putInLocalStorage = (id) => {
-  localStorage.setItem(id, '1');
+  backgroundElement.show()
+  element.hide();
+  updateLayers(element);
 }
 
 export const isItemPicked = (id) => {
@@ -82,3 +87,8 @@ export const isItemPicked = (id) => {
     return false;
   }
 }
+
+export const putInLocalStorage = (id) => {
+  localStorage.setItem(id, '1');
+}
+
