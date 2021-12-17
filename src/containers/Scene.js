@@ -51,7 +51,7 @@ const Index = ({
         </Layer>
         <Layer id='toolbar' width={width} height={height} >
           {toolbarObjects.map((object) =>
-            <ObjectImage key={object.id} scale={0.47} {...object} />)
+            <ObjectImage key={object.id} {...object} />)
           }
         </Layer>
       </Stage>

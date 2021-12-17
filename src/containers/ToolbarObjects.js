@@ -33,10 +33,10 @@ const toolbarObjects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/book-toolbar.png',
     id: "book-toolbar",
-    x: 120,
-    y: 2000,
+    x: 80,
+    y: 920,
     visible: isItemPicked('book'),
-    handyScale: 0.7,
+    handyScale: 0.4,
     onClick: () => {
       //todo
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
