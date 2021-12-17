@@ -31,7 +31,6 @@ const Objects = (state, setState) => [
       toast.info('احتمالاً احتمالاً‌ راه بازگشتی در کار نیست!')
     },
   },
-
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/book.png',
     id: "book",

@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 
-export const ROOM0_NAME = 'room0';
-export const ROOM1_NAME = 'room1';
-export const ROOM2_NAME = 'room2';
-export const ROOM3_NAME = 'room3';
-export const ROOM4_NAME = 'room4';
+export const ROOM0_NAME = 'ro0oo0O0m0';
+export const ROOM1_NAME = 'r0o0oo0Om1';
+export const ROOM2_NAME = 'r000oOoOm2';
+export const ROOM3_NAME = 'rOo0O0o0m3';
+export const ROOM4_NAME = 'ro0oOo0om4';
 export const LAMP_SIMULATE = 'lamp_simulation';
 export const BUILD_MACHINE = 'build_machine';
 export const INSIDE_BOX_WITH_OFF_LAMP = 'off_lamp';
@@ -71,7 +71,6 @@ export const getFromToolbar = (element) => {
     return;
   }
   localStorage.setItem(id, '0');
-
   backgroundElement.show()
   element.hide();
 }

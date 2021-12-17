@@ -22,6 +22,12 @@ const Index = () => {
         backgroundImageLink={'/Room3/background.png'}
         objects={Objects(state, setState)} />
       <Image
+        image={'/Room1/scientists-big.png'}
+        open={state?.showScientistsImage}
+        handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
+        text={'Manhattan Project Scientists - 1944'}
+      />
+      <Image
         image={'/Room3/maze.png'}
         open={state?.showMazeImage}
         handleClose={() => { setState({ ...state, showMazeImage: !state.showMazeImage }) }}

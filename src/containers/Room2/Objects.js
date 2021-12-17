@@ -42,6 +42,22 @@ const Objects = (state, setState) => [
     }
   },
   {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/document.png',
+    id: "document",
+    x: 2250,
+    y: 962,
+    visible: !isItemPicked('document'),
+    onClick: (e) => {
+      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
+      addToToolbar(e.target);
+      getAnotherElementById(e.target, 'open-glass-door-left').hide();
+      getAnotherElementById(e.target, 'open-glass-door-right').hide();
+      getAnotherElementById(e.target, 'closed-glass-door-after').show();
+      getAnotherElementById(e.target, 'glass').show();
+
+    }
+  },
+  {
     imageUrl: process.env.PUBLIC_URL + '/Room2/closed-closet.png',
     id: "closed-closet",
     x: 360,
@@ -106,21 +122,6 @@ const Objects = (state, setState) => [
     x: 2500,
     y: 1150,
     visible: false,
-  },
-
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/document.png',
-    id: "document",
-    x: 2250,
-    y: 962,
-    visible: !isItemPicked('document'),
-    onClick: (e) => {
-      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
-      addToToolbar(e.target);
-      getAnotherElementById(e.target, 'open-glass-door-left').hide();
-      getAnotherElementById(e.target, 'open-glass-door-right').hide();
-      getAnotherElementById(e.target, 'closed-glass-door-after').show();
-    }
   },
   {
     imageUrl: process.env.PUBLIC_URL + '/Room2/machine-pieces.png',
