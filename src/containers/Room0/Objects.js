@@ -44,7 +44,7 @@ const Objects = [
       isTvClicked = true;
       const redArea = getAnotherElementById(e.target, "red-area");
       const monitor = getAnotherElementById(e.target, "monitor");
-      playAudio(process.env.PUBLIC_URL + '/Room0/scan.wav');
+      playAudio(process.env.PUBLIC_URL + '/Room0/scan.mp3');
       redArea.show();
       monitor.show();
       // showElementSoftly(redArea, 2000);
