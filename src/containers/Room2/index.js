@@ -5,8 +5,10 @@ import useImage from 'use-image';
 
 import Image from '../../components/Dialog/Image';
 import Password from '../../components/Dialog/Password';
+import Video from '../../components/Dialog/Video';
 import Scene from '../Scene';
 import Objects from './Objects';
+
 
 const useStyles = makeStyles(() => ({
   fullHeight: {
@@ -35,6 +37,11 @@ const Index = () => {
         open={state?.showPasswordDialog}
         handleClose={() => { setState({ ...state, showPasswordDialog: !state.showPasswordDialog }) }}
         callbackFunction={state?.passwordCallback}
+      />
+      <Video
+        image={'/Room2/cradle.mp4'}
+        open={state?.showCradleVideo}
+        handleClose={() => { setState({ ...state, showCradleVideo: !state.showCradleVideo }) }}
       />
     </>
   );

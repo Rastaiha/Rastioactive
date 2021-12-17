@@ -20,14 +20,14 @@ export const getAnotherElementById = (element, id) => {
 }
 
 export const areTwoElementsNear = (elem1, elem2) => {
-  if (Math.abs(elem1.getX() - elem2.getX()) < 100 && Math.abs(elem1.getY() - elem2.getY()) < 100) {
+  if (Math.abs(elem1.getX() - elem2.getX()) < 80 && Math.abs(elem1.getY() - elem2.getY()) < 80) {
     return true;
   }
   return false;
 }
 
 export const isElementNearPoint = (elem, point) => {
-  if (Math.abs(elem.getX() - point.x) < 100 && Math.abs(elem.getY() - point.y) < 100) {
+  if (Math.abs(elem.getX() - point.x) < 80 && Math.abs(elem.getY() - point.y) < 80) {
     return true;
   }
   return false;

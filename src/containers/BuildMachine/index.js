@@ -43,8 +43,8 @@ const Index = () => {
     <>
       <Scene backgroundImageLink={'/BuildMachine/background.jpeg'} objects={Objects(state, setState)} />
       <Video
-        image={'/Room1/photometer.mp4'}
-        open={state?.showPhotometerVideo}
+        image={'/BuildMachine/geer.mp4'}
+        open={state?.showMachineVideo}
       />
     </>
   );

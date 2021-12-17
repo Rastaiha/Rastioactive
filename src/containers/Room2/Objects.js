@@ -143,6 +143,20 @@ const Objects = (state, setState) => [
     y: 1140,
     visible: isItemPicked('machine'),
   },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/cradle.png',
+    id: "cradle",
+    x: 3570,
+    y: 1430,
+    handyScale: 0.35,
+    onClick: (e) => {
+      setState({
+        ...state,
+        showCradleVideo: true,
+      })
+    }
+  },
+
 
 
   ...books(state, setState),
