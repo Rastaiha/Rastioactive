@@ -60,7 +60,6 @@ export const addToToolbar = (element) => {
   localStorage.setItem(id, '1');
   toolbarElement.show()
   element.hide();
-  updateLayers(element);
 }
 
 export const getFromToolbar = (element) => {
@@ -75,7 +74,6 @@ export const getFromToolbar = (element) => {
 
   backgroundElement.show()
   element.hide();
-  updateLayers(element);
 }
 
 export const isItemPicked = (id) => {

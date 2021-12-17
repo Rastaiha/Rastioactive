@@ -13,7 +13,7 @@ const toolbarObjects = (state, setState) => [
     x: 85,
     y: 860,
     handyScale: 1,
-    // visible: isItemPicked('document'),
+    visible: isItemPicked('document'),
     onClick: () => {
       //todo
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
@@ -25,7 +25,7 @@ const toolbarObjects = (state, setState) => [
     x: 300,
     y: 860,
     handyScale: 1,
-    // visible: isItemPicked('glass'),
+    visible: isItemPicked('glass'),
     onClick: (e) => {
       getFromToolbar(e.target);
     },
@@ -34,7 +34,7 @@ const toolbarObjects = (state, setState) => [
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/book-toolbar.png',
     id: "book-toolbar",
     x: 80,
-    y: 940,
+    y: 945,
     visible: isItemPicked('book'),
     handyScale: 0.4,
     onClick: () => {
@@ -45,8 +45,9 @@ const toolbarObjects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/scientists-toolbar.png',
     id: "scientists-toolbar",
-    x: 350,
-    y: 1990,
+    x: 210,
+    y: 940,
+    handyScale: 0.6,
     visible: isItemPicked('scientists'),
     onClick: (e) => {
       setState({
@@ -58,8 +59,9 @@ const toolbarObjects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/magnet-toolbar.png',
     id: "magnet-toolbar",
-    x: 560,
-    y: 2000,
+    x: 330,
+    y: 940,
+    handyScale: 0.6,
     visible: isItemPicked('magnet'),
     onClick: (e) => {
       getFromToolbar(e.target);
@@ -68,8 +70,9 @@ const toolbarObjects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/coil-toolbar.png',
     id: "coil-toolbar",
-    x: 750,
-    y: 2000,
+    x: 450,
+    y: 940,
+    handyScale: 0.6,
     visible: isItemPicked('coil'),
     onClick: (e) => {
       getFromToolbar(e.target);
