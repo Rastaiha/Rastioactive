@@ -1,22 +1,18 @@
 import './Theme/Styles/App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Button, CssBaseline, LinearProgress } from '@material-ui/core';
+import { CssBaseline, LinearProgress } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { SnackbarProvider } from 'notistack';
+import Konva from 'konva';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { IntlProvider } from 'react-redux-multilingual';
 import { useHistory } from 'react-router-dom';
 import { Slide, ToastContainer } from 'react-toastify';
 
 import MoreThanOneTabDialog from './components/Dialog/MoreThanOneTab';
-import Notifier from './components/Notifications/Notifications';
 import Root from './root';
-import MuiTheme from './Theme/MuiThemes/MuiTheme';
 import RTLMuiTheme from './Theme/MuiThemes/RTLMuiTheme';
-import translations from './translations';
 import jss from './utils/jssRTL';
 
 // const Main = () => (
@@ -42,6 +38,8 @@ const App = ({
     setOpen(true);
   }, false)
   localStorage.setItem('OneTab', Math.random())
+
+  Konva.pixelRatio = 1
 
   // handle refresh on resize
   // React.useEffect(() => {
