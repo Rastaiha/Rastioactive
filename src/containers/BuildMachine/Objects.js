@@ -11,6 +11,7 @@ import {
 
 
 const onDragEnd = (element) => {
+  console.log(element.getX(), ' --- ', element.getY())
   // const coil = getAnotherElementById(element, 'coil');
   // const magnet = getAnotherElementById(element, 'magnet');
   // if (Math.abs(coil.getX() - magnet.getX()) < 50 && Math.abs(coil.getY() - magnet.getY()) < 50) {

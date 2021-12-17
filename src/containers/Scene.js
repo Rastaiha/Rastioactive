@@ -17,6 +17,8 @@ const Index = ({
 
   const [backgroundImage] = useImage(process.env.PUBLIC_URL + backgroundImageLink);
   const scaleY = height / backgroundImage?.height;
+  const toolbarScale = height / 1000;
+  console.log(height, toolbarScale);
 
   const backgroundObject = objects.filter((object) => !object.id.endsWith('toolbar'));
   const toolbarObjects = objects.filter((object) => object.id.endsWith('toolbar'));
@@ -51,7 +53,7 @@ const Index = ({
         </Layer>
         <Layer id='toolbar' width={width} height={height} >
           {toolbarObjects.map((object) =>
-            <ObjectImage key={object.id} {...object} />)
+            <ObjectImage key={object.id} scale={toolbarScale} {...object} />)
           }
         </Layer>
       </Stage>

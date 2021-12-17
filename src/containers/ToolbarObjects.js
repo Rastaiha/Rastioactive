@@ -10,10 +10,10 @@ const toolbarObjects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/document-toolbar.png',
     id: "document-toolbar",
-    x: 130,
-    y: 1840,
-    handyScale: 2.1,
-    visible: isItemPicked('document'),
+    x: 85,
+    y: 860,
+    handyScale: 1,
+    // visible: isItemPicked('document'),
     onClick: () => {
       //todo
       toast.info('هر چیز که خار آید، یک روز به کار آيد!');
@@ -22,10 +22,10 @@ const toolbarObjects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/glass-toolbar.png',
     id: "glass-toolbar",
-    x: 500,
-    y: 1860,
-    handyScale: 2,
-    visible: isItemPicked('glass'),
+    x: 300,
+    y: 860,
+    handyScale: 1,
+    // visible: isItemPicked('glass'),
     onClick: (e) => {
       getFromToolbar(e.target);
     },
@@ -34,7 +34,7 @@ const toolbarObjects = (state, setState) => [
     imageUrl: process.env.PUBLIC_URL + '/Toolbar/book-toolbar.png',
     id: "book-toolbar",
     x: 80,
-    y: 920,
+    y: 940,
     visible: isItemPicked('book'),
     handyScale: 0.4,
     onClick: () => {
