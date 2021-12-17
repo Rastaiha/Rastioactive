@@ -2,9 +2,11 @@ import { toast } from 'react-toastify';
 
 import toolbarObjects from '../ToolbarObjects';
 import {
+  addToToolbar,
   areTwoElementsNear,
   getAnotherElementById,
   isElementNearPoint,
+  isItemPicked,
   ROOM1_NAME,
   ROOM4_NAME,
   showElementSoftly,
@@ -71,7 +73,7 @@ const Objects = (state, setState) => [
     id: "ww2-vivid",
     x: 3298,
     y: 895,
-    opacity: 0,
+    visible: false,
   },
 
   {
@@ -139,13 +141,13 @@ const Objects = (state, setState) => [
     y: 1060,
     visible: false,
   },
-
   {
-    imageUrl: process.env.PUBLIC_URL + '/Toolbar/glass.png',
+    imageUrl: process.env.PUBLIC_URL + '/Room3/glass.png',
     id: 'glass',
     x: 1000,
-    y: 100,
+    y: 1000,
     draggable: true,
+    visible: !isItemPicked('glass'),
     onDragEnd: (e) => {
       if (isWW2Clear) return;
       const ww2 = getAnotherElementById(e.target, 'ww2');
@@ -153,7 +155,8 @@ const Objects = (state, setState) => [
       const ww2_vivid = getAnotherElementById(e.target, "ww2-vivid");
       if (areTwoElementsNear(ww2, glass)) {
         isWW2Clear = true;
-        showElementSoftly(ww2_vivid, 1000);
+        // showElementSoftly(ww2_vivid, 1000);
+        ww2_vivid.show();
         toast.success('های هیتلر!')
       }
     }

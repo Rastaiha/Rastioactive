@@ -65,6 +65,7 @@ export const addToToolbar = (element) => {
 export const getFromToolbar = (element) => {
   let id = element.attrs.id;
   id = id.substring(0, id.length - 8);
+  console.log(id)
   const backgroundElement = getAnotherElementById(element, id)
   if (!backgroundElement) {
     toast.info('ولش کن، اینجا به درد نمی‌خوره.');
