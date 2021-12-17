@@ -69,10 +69,16 @@ export const getFromToolbar = (element) => {
   element.hide()
 }
 
+export const putInLocalStorage = (id) => {
+  localStorage.setItem(id, '1');
+}
+
 export const isItemPicked = (id) => {
   const status = localStorage.getItem(id);
+  if (status == '1') {
+    return true;
+  }
   if (status == '0' || status == null) {
     return false;
   }
-  return true;
 }

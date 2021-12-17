@@ -22,26 +22,26 @@ const Index = () => {
   const classes = useStyles();
   const [state, setState] = React.useState();
 
-  React.useEffect(() => {
-    toast.info('آیا می‌دانید نور با برخورد به پره‌های الکترومتر، آن را به حرکت درمی‌آورد؟')
-    setTimeout(() => {
-      setState({
-        showPhotometerVideo: true,
-      })
-    }, 8000);
+  // React.useEffect(() => {
+  //   toast.info('آیا می‌دانید نور با برخورد به پره‌های الکترومتر، آن را به حرکت درمی‌آورد؟')
+  //   setTimeout(() => {
+  //     setState({
+  //       showPhotometerVideo: true,
+  //     })
+  //   }, 8000);
 
-    setTimeout(() => {
-      toast.info('پیشنهاد می‌کنم یک بار دیگه هم فیلم رو ببینی! عجله کن، ۱۱ ثانیه‌ی دیگه از جعبه خارج میشیم');
-    }, 21000);
+  //   setTimeout(() => {
+  //     toast.info('پیشنهاد می‌کنم یک بار دیگه هم فیلم رو ببینی! عجله کن، ۱۱ ثانیه‌ی دیگه از جعبه خارج میشیم');
+  //   }, 21000);
 
-    setTimeout(() => {
-      window.location.href = `/${ROOM1_NAME}`;
-    }, 33000);
-  }, [])
+  //   setTimeout(() => {
+  //     window.location.href = `/${ROOM1_NAME}`;
+  //   }, 33000);
+  // }, [])
 
   return (
     <>
-      <Scene backgroundImageLink={'/Room0/background.png'} objects={Objects(state, setState)} />
+      <Scene backgroundImageLink={'/BuildMachine/background.jpeg'} objects={Objects(state, setState)} />
       <Video
         image={'/Room1/photometer.mp4'}
         open={state?.showPhotometerVideo}

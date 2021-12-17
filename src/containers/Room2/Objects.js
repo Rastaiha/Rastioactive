@@ -3,13 +3,44 @@ import { toast } from 'react-toastify';
 import toolbarObjects from '../ToolbarObjects';
 import {
   addToToolbar,
+  BUILD_MACHINE,
   getAnotherElementById,
   INSIDE_BOX_WITH_OFF_LAMP,
   isItemPicked,
   ROOM2_NAME,
+  ROOM3_NAME,
 } from '../utils';
 
 const Objects = (state, setState) => [
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/room2-door-layer.png',
+    id: "room2-door-layer",
+    x: 3583,
+    y: 1048,
+    opacity: 0,
+    onClick: (e) => {
+      if (!isItemPicked('glass')) {
+        toast.info('از من به تو نصیحت: بیشتر اتاق رو بگرد...')
+        return;
+      }
+      if (isItemPicked('machine')) {
+        setState({
+          ...state,
+          showPasswordDialog: true,
+          passwordCallback: (inputPassword) => {
+            if (inputPassword == '63') {
+              toast.success('شوبخیر!');
+              setTimeout(() => {
+                window.location.href = `/${ROOM3_NAME}`;
+              }, 6000);
+            }
+          }
+        })
+      } else {
+        toast.info('قفله. نیروی بیشتری وارد کن.')
+      }
+    }
+  },
   {
     imageUrl: process.env.PUBLIC_URL + '/Room2/closed-closet.png',
     id: "closed-closet",
@@ -76,16 +107,7 @@ const Objects = (state, setState) => [
     y: 1150,
     visible: false,
   },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/cradle.gif',
-    id: "cradle",
-    x: 2148,
-    y: 848,
-    onClick: (e) => {
-      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
-      addToToolbar(e.target);
-    }
-  },
+
   {
     imageUrl: process.env.PUBLIC_URL + '/Room2/document.png',
     id: "document",
@@ -100,6 +122,28 @@ const Objects = (state, setState) => [
       getAnotherElementById(e.target, 'closed-glass-door-after').show();
     }
   },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/machine-pieces.png',
+    id: "machine-pieces",
+    x: 2900,
+    y: 942,
+    visible: !isItemPicked('machine'),
+    onClick: (e) => {
+      toast.info('به سوی سرهم‌کردن قطعات...');
+      setTimeout(() => {
+        window.location.href = `/${BUILD_MACHINE}`;
+      }, 6000);
+    }
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/complete-machine.png',
+    id: "complete-machine",
+    x: 2915,
+    y: 1140,
+    visible: isItemPicked('machine'),
+  },
+
+
   ...books(state, setState),
   ...toolbarObjects(state, setState),
 ]
@@ -137,89 +181,6 @@ const books = (state, setState) => [
     onClick: (e) => {
       toast.success("red")
     }
-  },
-]
-
-
-const pieces = (state, setState) => [
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/machine-base.png',
-    id: "machine-base",
-    x: 1020,
-    y: 1068,
-
-    draggable: true,
-    onDragEnd: (e) => {
-      console.log(e.target.getX(), e.target.getY())
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/piece1.png',
-    id: "piece1",
-    x: 1220,
-    y: 1068,
-
-    draggable: true,
-    onDragEnd: (e) => {
-      console.log(e.target.getX(), e.target.getY())
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/piece2.png',
-    id: "piece2",
-    x: 1420,
-    y: 1068,
-
-    draggable: true,
-    onDragEnd: (e) => {
-      console.log(e.target.getX(), e.target.getY())
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/piece3.png',
-    id: "piece3",
-    x: 1420,
-    y: 1068,
-
-    draggable: true,
-    onDragEnd: (e) => {
-      console.log(e.target.getX(), e.target.getY())
-    },
-  },
-
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/piece4.png',
-    id: "piece4",
-    x: 1420,
-    y: 1068,
-
-    draggable: true,
-    onDragEnd: (e) => {
-      console.log(e.target.getX(), e.target.getY())
-    },
-  },
-
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/piece5.png',
-    id: "piece5",
-    x: 1420,
-    y: 1068,
-
-    draggable: true,
-    onDragEnd: (e) => {
-      console.log(e.target.getX(), e.target.getY())
-    },
-  },
-
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room2/piece6.png',
-    id: "piece6",
-    x: 1020,
-    y: 1068,
-    draggable: true,
-    onDragEnd: (e) => {
-      console.log(e.target.getX(), e.target.getY())
-    },
   },
 ]
 
