@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 
+import toolbarObjects from '../ToolbarObjects';
 import {
   areTwoElementsNear,
   getAnotherElementById,
@@ -153,18 +154,7 @@ const Objects = (state, setState) => [
       }
     }
   },
-  ...toolbarItems,
-]
-
-const toolbarItems = [
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Toolbar/glass-toolbar.png',
-    id: 'glass-toolbar',
-    x: 100,
-    y: 1500,
-    draggable: true,
-  },
-
+  ...toolbarObjects(state, setState),
 ]
 
 export default Objects;

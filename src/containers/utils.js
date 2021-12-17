@@ -45,12 +45,12 @@ export const showElementSoftly = (element, duration) => {
 
 export const addToToolbar = (element) => {
   const id = element.attrs.id;
-  localStorage.setItem(id, '1');
   const toolbarElement = getAnotherElementById(element, id + '-toolbar')
   if (!toolbarElement) {
     toast.error('خطا!');
     return;
   }
+  localStorage.setItem(id, '1');
   toolbarElement.show()
   element.hide()
 }
@@ -58,12 +58,12 @@ export const addToToolbar = (element) => {
 export const getFromToolbar = (element) => {
   let id = element.attrs.id;
   id = id.substring(0, id.length - 8);
-  localStorage.setItem(id, '0');
   const backgroundElement = getAnotherElementById(element, id)
   if (!backgroundElement) {
     toast.error('خطا!');
     return;
   }
+  localStorage.setItem(id, '0');
   backgroundElement.show()
   element.hide()
 }

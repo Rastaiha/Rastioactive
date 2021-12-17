@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 
+import toolbarObjects from '../ToolbarObjects';
 import {
   addToToolbar,
   INSIDE_BOX_WITH_OFF_LAMP,
@@ -9,167 +10,100 @@ import {
 
 const Objects = (state, setState) => [
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/box-layer.png',
-    id: "box-layer",
-    x: 3920,
-    y: 1268,
-    opacity: 0,
-    onClick: (e) => {
-      toast.info('یعنی تو جعبه چی می‌تونه باشه؟')
+    imageUrl: process.env.PUBLIC_URL + '/Room2/machine-base.png',
+    id: "machine-base",
+    x: 1020,
+    y: 1068,
+    handyScale: 4,
+    draggable: true,
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
     },
   },
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/door-layer.png',
-    id: "door-layer",
-    x: 1235,
-    y: 1205,
-    opacity: 0,
-    onClick: (e) => {
-      toast.info('احتمالاً احتمالاً‌ راه بازگشتی در کار نیست!')
+    imageUrl: process.env.PUBLIC_URL + '/Room2/piece1.png',
+    id: "piece1",
+    x: 1220,
+    y: 1068,
+    handyScale: 4,
+    draggable: true,
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
+    },
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/piece2.png',
+    id: "piece2",
+    x: 1420,
+    y: 1068,
+    handyScale: 4,
+    draggable: true,
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
+    },
+  },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/piece3.png',
+    id: "piece3",
+    x: 1420,
+    y: 1068,
+    handyScale: 4,
+    draggable: true,
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
     },
   },
 
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/book.png',
-    id: "book",
-    x: 340,
-    y: 690,
+    imageUrl: process.env.PUBLIC_URL + '/Room2/piece4.png',
+    id: "piece4",
+    x: 1420,
+    y: 1068,
+    handyScale: 4,
     draggable: true,
-    visible: !isItemPicked("book"),
-    onClick: (e) => {
-      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
-      addToToolbar(e.target)
-    }
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/magnet.png',
-    id: "magnet",
-    x: 3940,
-    y: 690,
-    draggable: true,
-    visible: !isItemPicked("magnet"),
-    onClick: (e) => {
-      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
-      addToToolbar(e.target)
-    }
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/keypad.png',
-    id: "keypad",
-    x: 220,
-    y: 1250,
-    onClick: () => {
-      setState({
-        ...state,
-        showKeypadDialog: true,
-        keypadCallback: (inputText) => {
-          if (inputText == '5274') {
-            toast.success('فعلاً، حداحافظ!');
-            setTimeout(() => {
-              window.location.href = `/${ROOM2_NAME}`;
-            }, 6000)
-          } else {
-            toast.error('زیرعسلی :(');
-          }
-        },
-      })
-    }
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/coil.png',
-    id: "coil",
-    x: 75,
-    y: 922,
-    draggable: true,
-    visible: !isItemPicked("coil"),
-    onClick: (e) => {
-      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
-      addToToolbar(e.target)
-    }
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists.png',
-    id: "scientists",
-    x: 730,
-    y: 1150,
-    visible: !isItemPicked('scientists'),
-    onClick: (e) => {
-      toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
-      addToToolbar(e.target)
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/3signs.png',
-    id: "3signs",
-    x: 3800,
-    y: 1396,
-    onClick: (e) => {
-      if (!isItemPicked('magnet') || !isItemPicked('coil')) {
-        toast.error('یکم بیشتر تو اتاق بگرد...');
-        return;
-      }
-      setState({
-        ...state,
-        showSignsDialog: true,
-        signsCallback: (inputText) => {
-          if (inputText == '123563') {
-            toast.success('بریم ببینیم توی جعبه چه خبره...');
-            setTimeout(() => {
-              window.location.href = `/${INSIDE_BOX_WITH_OFF_LAMP}`;
-            }, 6000)
-          } else {
-            toast.error('وا نشد :(');
-          }
-        },
-      })
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
     },
   },
 
   {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/book-toolbar.png',
-    id: "book-toolbar",
-    x: 100,
-    y: 2000,
-    visible: isItemPicked('book'),
-    onClick: (e) => {
-      //todo
-      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/scientists-toolbar.png',
-    id: "scientists-toolbar",
-    x: 300,
-    y: 2000,
-    visible: isItemPicked('scientists'),
-    onClick: (e) => {
-      setState({
-        ...state,
-        showScientistsImage: true,
-      })
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/magnet-toolbar.png',
-    id: "magnet-toolbar",
-    x: 500,
-    y: 2000,
-    visible: isItemPicked('magnet'),
-    onClick: (e) => {
-      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
-    },
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/coil-toolbar.png',
-    id: "coil-toolbar",
-    x: 700,
-    y: 2000,
-    visible: isItemPicked('coil'),
-    onClick: (e) => {
-      toast.info('هر چیز که خار آید، یک روز به کار آيد!');
+    imageUrl: process.env.PUBLIC_URL + '/Room2/piece5.png',
+    id: "piece5",
+    x: 1420,
+    y: 1068,
+    handyScale: 4,
+    draggable: true,
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
     },
   },
 
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/piece6.png',
+    id: "piece6",
+    x: 1020,
+    y: 1068,
+    handyScale: 4,
+    draggable: true,
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
+    },
+  },
+
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room2/piece7.png',
+    id: "piece7",
+    x: 1620,
+    y: 1068,
+    handyScale: 4,
+    draggable: true,
+    onDragEnd: (e) => {
+      console.log(e.target.getX(), e.target.getY())
+    },
+  },
+
+
+  ...toolbarObjects(state, setState),
 ]
 
 export default Objects;
