@@ -24,14 +24,14 @@ const Objects = [
     id: "red-area",
     x: 1758,
     y: 860,
-    opacity: 0,
+    visible: false,
   },
   {
     imageUrl: process.env.PUBLIC_URL + '/Room0/scan-monitor.png',
     id: "monitor",
     x: 3275,
     y: 650,
-    opacity: 0,
+    visible: false,
   },
   {
     imageUrl: process.env.PUBLIC_URL + '/Room0/tv.png',
@@ -45,8 +45,10 @@ const Objects = [
       const redArea = getAnotherElementById(e.target, "red-area");
       const monitor = getAnotherElementById(e.target, "monitor");
       playAudio(process.env.PUBLIC_URL + '/Room0/scan.wav');
-      showElementSoftly(redArea, 2000);
-      showElementSoftly(monitor, 1000);
+      redArea.show();
+      monitor.show();
+      // showElementSoftly(redArea, 2000);
+      // showElementSoftly(monitor, 1000);
     },
   },
   {
@@ -54,7 +56,7 @@ const Objects = [
     id: "wall1",
     x: 645,
     y: 850,
-    opacity: 0,
+    visible: false,
     onClick: (e) => {
       playAudio(process.env.PUBLIC_URL + '/Room0/bang1.mp3');
     },
@@ -106,7 +108,7 @@ const Objects = [
     y: 850,
     opacity: 0,
     onClick: (e) => {
-      if (isSoundPlying) return;
+      if (isSoundPlying || !isTvClicked) return;
       if (!isFakeDoorKnocked) {
         isFakeDoorKnocked = true;
         playAudio(process.env.PUBLIC_URL + '/Room0/bang2.mp3');

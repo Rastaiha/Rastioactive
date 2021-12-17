@@ -35,8 +35,8 @@ const Objects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/book.png',
     id: "book",
-    x: 340,
-    y: 690,
+    x: 4010,
+    y: 1920,
     draggable: true,
     visible: !isItemPicked("book"),
     onClick: (e) => {

@@ -1,14 +1,6 @@
-import { Container, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
-
-import AppBar from '../components/Appbar/ResponsiveAppBar';
-import DialogMessage from '../components/Dialog/Message';
-import {
-  getPlayerAction,
-  getUserNotificationsAction,
-} from '../redux/slices/account';
 
 const useStyles = makeStyles((theme) => ({
   bottomBar: {
@@ -54,22 +46,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Layout = ({
-  getPlayer,
-  getUserNotifications,
-
   backgroundImage,
-  open,
-  text,
   ...props
 }) => {
   const classes = useStyles({ backgroundImage });
-  const [openDialogMessage, setOpenDialogMessage] = React.useState(open || false);
   const history = useHistory();
-
-  // useEffect(() => {
-  //   getPlayer();
-  //   getUserNotifications();
-  // }, []);
 
   return (
     <>
@@ -80,15 +61,4 @@ const Layout = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  open: state.dialogMessage.open,
-  text: state.dialogMessage.text,
-});
-
-export default connect(
-  mapStateToProps,
-  {
-    getPlayer: getPlayerAction,
-    getUserNotifications: getUserNotificationsAction,
-  }
-)(Layout);
+export default Layout;
