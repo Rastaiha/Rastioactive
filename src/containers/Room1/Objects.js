@@ -87,7 +87,7 @@ const Objects = (state, setState) => [
     visible: !isItemPicked("coil"),
     onClick: (e) => {
       toast.success('احسنت! چیز به‌درد‌بخوری پیدا کردی.');
-      addToToolbar(e.target)
+      addToToolbar(e.target);
     }
   },
   {

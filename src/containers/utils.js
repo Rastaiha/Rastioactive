@@ -50,8 +50,7 @@ export const addToToolbar = (element) => {
     toast.error('خطا!');
     return;
   }
-  // localStorage.setItem(id, '1');
-  sessionStorage.setItem(id, '1');
+  localStorage.setItem(id, '1');
   toolbarElement.show()
   element.hide()
 }
@@ -64,14 +63,13 @@ export const getFromToolbar = (element) => {
     toast.error('خطا!');
     return;
   }
-  sessionStorage.setItem(id, '0');
-  // localStorage.setItem(id, '0');
+  localStorage.setItem(id, '0');
   backgroundElement.show()
   element.hide()
 }
 
 export const isItemPicked = (id) => {
-  const status = sessionStorage.getItem(id);
+  const status = localStorage.getItem(id);
   if (status == '0' || status == null) {
     return false;
   }
