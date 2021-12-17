@@ -6,6 +6,7 @@ export const ROOM2_NAME = 'room2';
 export const ROOM3_NAME = 'room3';
 export const ROOM4_NAME = 'room4';
 export const LAMP_SIMULATE = 'lamp_simulation';
+export const BUILD_MACHINE = 'build_machine';
 export const INSIDE_BOX_WITH_OFF_LAMP = 'off_lamp';
 export const INSIDE_BOX_WITH_ON_LAMP = 'on_lamp';
 

@@ -66,10 +66,7 @@ const Index = ({
           <Grid item container direction='column' justifyContent='center' sm={3} spacing={2}>
             <Grid item>
               <Typography align='center' variant='h2'>
-                {'قانون فارادی'}
-              </Typography>
-              <Typography align='center' variant='h2'>
-                {'دومین قانون بنیادی طبیعت'}
+                {'دومین قانون بنیادی طبیعت؟'}
               </Typography>
             </Grid>
             <Grid item>
