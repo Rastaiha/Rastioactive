@@ -84,7 +84,10 @@ const toolbarObjects = (state, setState) => [
     handyScale: 0.1,
     visible: isItemPicked('paper'),
     onClick: (e) => {
-      getFromToolbar(e.target);
+      setState({
+        ...state,
+        showPaperDialog: true,
+      })
     },
   },
 ]
