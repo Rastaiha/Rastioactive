@@ -162,6 +162,7 @@ const Objects = (state, setState) => [
         // showElementSoftly(ww2_vivid, 1000);
         ww2_vivid.show();
         toast.success('های هیتلر!')
+        e.target.hide();
       }
     }
   },

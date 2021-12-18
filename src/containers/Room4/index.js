@@ -31,10 +31,16 @@ const Index = () => {
         handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
         text={'Manhattan Project Scientists - 1944'}
       />
+      <Image
+        image={'/Room1/paper.png'}
+        open={state?.showPaperDialog}
+        handleClose={() => { setState({ ...state, showPaperDialog: !state.showPaperDialog }) }}
+      />
       <Password
         open={state?.showGateDialog}
         handleClose={() => { setState({ ...state, showGateDialog: !state.showGateDialog }) }}
         callbackFunction={state?.callback}
+        image={'/Room4/Unknown.jpg'}
       />
     </>
   );

@@ -33,9 +33,8 @@ const Index = () => {
       />
       <Image
         image={'/Room1/paper.png'}
-        open={state?.showScientistsImage}
-        handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
-        text={'Manhattan Project Scientists - 1944'}
+        open={state?.showPaperDialog}
+        handleClose={() => { setState({ ...state, showPaperDialog: !state.showPaperDialog }) }}
       />
       <Password
         open={state?.showKeypadDialog}

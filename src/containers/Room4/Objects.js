@@ -10,6 +10,7 @@ import {
   ROOM1_NAME,
   ROOM2_NAME,
 } from '../utils';
+
 let arePiecesInRightPlace = false;
 
 const onDragEnd = (e) => {
@@ -18,12 +19,11 @@ const onDragEnd = (e) => {
   const point2 = getAnotherElementById(e.target, "point2");
   const compressor = getAnotherElementById(e.target, "compressor")
   const condenser = getAnotherElementById(e.target, "condenser");
-  console.log("@@@@@@@")
   if (areTwoElementsNear(point1, compressor) && areTwoElementsNear(point2, condenser)) {
     arePiecesInRightPlace = true;
     toast.success('خره وا شد!');
     setTimeout(() => {
-      toast.info('کلمه‌ی «خره» در گویش اصفهانی، معنای مثبتی دارد و جهت خطاب‌کردن دوستان استفاده می‌شود!');
+      toast.info('کلمه‌ی «خره» در گویش اصفهانی معنای مثبتی دارد و جهت خطاب‌کردن دوستان استفاده می‌شود!');
     }, 3000)
     getAnotherElementById(e.target, "dariche-long").hide();
     getAnotherElementById(e.target, "dariche-short").show();
@@ -58,6 +58,7 @@ const Objects = (state, setState) => [
     id: "dariche-long",
     x: 1220,
     y: 1810,
+    visible: !isItemPicked('bomb'),
   },
 
   {
@@ -65,7 +66,7 @@ const Objects = (state, setState) => [
     id: "dariche-short",
     x: 1220,
     y: 1810,
-    visible: false,
+    visible: !isItemPicked('bomb'),
     onClick: (e) => {
       toast.info('برو کنار موشکی نشی...');
       setTimeout(() => {
@@ -82,6 +83,7 @@ const Objects = (state, setState) => [
         getAnotherElementById(e.target, "dariche-short").hide()
         getAnotherElementById(e.target, "compressor").hide()
         getAnotherElementById(e.target, "condenser").hide()
+        localStorage.setItem('bomb', '1');
       }, 10000);
     },
   },
@@ -91,10 +93,7 @@ const Objects = (state, setState) => [
     id: "bomb-closed",
     x: 2196,
     y: 1670,
-    visible: false,
-    onClick: (e) => {
-      toast.info('یعنی تو جعبه چی می‌تونه باشه؟')
-    },
+    visible: isItemPicked('bomb'),
   },
 
   {
@@ -103,6 +102,7 @@ const Objects = (state, setState) => [
     x: 3920,
     y: 1780,
     draggable: true,
+    visible: !isItemPicked('bomb'),
     onDragEnd,
     onClick: () => {
       toast.info('این یک جاروبرقی نیست!');
@@ -115,9 +115,10 @@ const Objects = (state, setState) => [
     x: 1820,
     y: 1330,
     draggable: true,
+    visible: !isItemPicked('bomb'),
     onDragEnd,
     onClick: () => {
-      toast.info('اگه سرحـــــالم، اگه شــــــادم واسه اینه که...');
+      toast.info('اگه سرحالم، اگه شادم واسه اینه که...');
     }
   },
 
@@ -139,7 +140,7 @@ const Objects = (state, setState) => [
     id: "random-rectangle",
     x: 1660,
     y: 1570,
-    draggable: true,
+    opacity: 0,
     onClick: (e) => {
       setState({
         ...state,

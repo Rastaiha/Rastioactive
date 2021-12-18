@@ -30,6 +30,8 @@ const Objects = (state, setState) => [
         setTimeout(() => {
           window.open('https://cryptii.com/pipes/enigma-machine');
         }, 7000)
+      } else {
+        toast.info('کار نمی‌کنه.');
       }
     },
   },
@@ -53,7 +55,7 @@ const Objects = (state, setState) => [
     opacity: 0,
     onClick: (e) => {
       if (isItemPicked('paper')) {
-        toast.success('راه بازگشتی در کار هست!');
+        toast.info('راه بازگشتی در کار هست!');
         setTimeout(() => {
           window.location.href = `/${ROOM4_NAME}`;
           return;
@@ -164,12 +166,6 @@ const Objects = (state, setState) => [
     },
   },
 
-  {
-    imageUrl: process.env.PUBLIC_URL + '/Room1/3signs.png',
-    id: "3signs",
-    x: 3800,
-    y: 1396,
-  },
 
   ...toolbarObjects(state, setState),
 ]
