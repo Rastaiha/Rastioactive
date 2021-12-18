@@ -44,12 +44,12 @@ const Index = () => {
         image={'/Room4/Unknown.jpg'}
       />
       <Video
-        image={'/Room4/win.mp4'}
+        image={'/Room4/win.MP4'}
         open={state?.showWinVideo}
         handleClose={() => { }}
       />
       <Video
-        image={'/Room4/loose.mp4'}
+        image={'/Room4/loose.MP4'}
         open={state?.showLooseVideo}
         handleClose={() => { }}
       />

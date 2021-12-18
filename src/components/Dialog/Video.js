@@ -54,7 +54,7 @@ function Index({
     <Dialog maxWidth='lg' open={open} onClose={handleClose} PaperComponent='false'>
       <DialogTitle>
         <Grid container spacing={2} justify='center'>
-          <video className={classes.media} controls >
+          <video className={classes.media} controls autoPlay>
             <source src={process.env.PUBLIC_URL + image} type="video/mp4" />
           </video>
         </Grid>

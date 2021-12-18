@@ -12,6 +12,7 @@ import {
 } from '../utils';
 
 let arePiecesInRightPlace = false;
+let hasCorrectPasswordPut = false;
 
 const onDragEnd = (e) => {
   if (arePiecesInRightPlace) return;
@@ -29,6 +30,32 @@ const onDragEnd = (e) => {
     getAnotherElementById(e.target, "dariche-short").show();
   }
 
+}
+
+const winFunction = (state, setState) => {
+  toast.success('احسنت! تو تونستی آزمایشگاه رو از نشت مواد رادیواکتیو نجات بدی. کارت عالی بود...')
+  setTimeout(() => {
+    setState({
+      ...state,
+      showWinVideo: true,
+    })
+  }, 6000);
+  setTimeout(() => {
+    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSc0IUJD188Z6qWAttzH_1MwrhjJxd2PmL5HzAmf6ZGKTPGvJA/viewform?usp=sf_link';
+  }, 30000);
+}
+
+const looseFunction = (state, setState) => {
+  toast.error('ای بابا! زدی همه چیو ترکوندی که...')
+  setTimeout(() => {
+    setState({
+      ...state,
+      showLooseVideo: true,
+    })
+  }, 6000);
+  setTimeout(() => {
+    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSc0IUJD188Z6qWAttzH_1MwrhjJxd2PmL5HzAmf6ZGKTPGvJA/viewform?usp=sf_link';
+  }, 52000);
 }
 
 const Objects = (state, setState) => [
@@ -97,6 +124,14 @@ const Objects = (state, setState) => [
   },
 
   {
+    imageUrl: process.env.PUBLIC_URL + '/Room4/bomb-open.png',
+    id: "bomb-open",
+    x: 2196,
+    y: 1670,
+    visible: false,
+  },
+
+  {
     imageUrl: process.env.PUBLIC_URL + '/Room4/compressor.png',
     id: "compressor",
     x: 3920,
@@ -142,17 +177,20 @@ const Objects = (state, setState) => [
     y: 1570,
     opacity: 0,
     onClick: (e) => {
+      if (hasCorrectPasswordPut) return;
       setState({
         ...state,
         showGateDialog: true,
         callback: (inputPassword) => {
           if (inputPassword == 'HECR') {
-            toast.info()
-            const a = 2;
+            toast.success('عه!')
+            hasCorrectPasswordPut = true;
+            getAnotherElementById(e.target, "bomb-closed").hide();
+            getAnotherElementById(e.target, "bomb-open").show();
           } else if (inputPassword == 'UFSS') {
-            const a = 2;
+            looseFunction(state, setState);
           } else {
-            toast.info('بمب‌س، خطرناکه. دست نزِن.')
+            toast.info('بمبِ‌س، خطرناک‌ِس. دست نزِن.')
           }
         }
       })
@@ -162,12 +200,16 @@ const Objects = (state, setState) => [
   {
     imageUrl: process.env.PUBLIC_URL + '/Room4/core.png',
     id: "core",
-    x: 3820,
-    y: 1194,
-    handyScale: 0.1,
+    x: 3838,
+    y: 1176,
+    handyScale: 0.15,
     draggable: true,
-    onDragEnd: () => {
-
+    onDragEnd: (e) => {
+      const core = e.target;
+      const point = getAnotherElementById(e.target, "point3");
+      if (areTwoElementsNear(core, point)) {
+        winFunction(state, setState);
+      }
     },
   },
 
