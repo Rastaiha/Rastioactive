@@ -5,6 +5,7 @@ import useImage from 'use-image';
 
 import Image from '../../components/Dialog/Image';
 import Password from '../../components/Dialog/Password';
+import Video from '../../components/Dialog/Video';
 import Scene from '../Scene';
 import Objects from './Objects';
 
@@ -41,6 +42,16 @@ const Index = () => {
         handleClose={() => { setState({ ...state, showGateDialog: !state.showGateDialog }) }}
         callbackFunction={state?.callback}
         image={'/Room4/Unknown.jpg'}
+      />
+      <Video
+        image={'/Room4/win.mp4'}
+        open={state?.showWinVideo}
+        handleClose={() => { }}
+      />
+      <Video
+        image={'/Room4/loose.mp4'}
+        open={state?.showLooseVideo}
+        handleClose={() => { }}
       />
     </>
   );

@@ -159,6 +159,18 @@ const Objects = (state, setState) => [
     }
   },
 
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room4/core.png',
+    id: "core",
+    x: 3820,
+    y: 1194,
+    handyScale: 0.1,
+    draggable: true,
+    onDragEnd: () => {
+
+    },
+  },
+
   ...toolbarObjects(state, setState),
   ...points,
 ]

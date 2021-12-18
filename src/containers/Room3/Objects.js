@@ -29,7 +29,7 @@ const checkPlaceAdasisInCorrectPlaces = (e) => {
     laserObject.show();
     showElementSoftly(laserObject, 2000);
     setTimeout(() => {
-      window.location.href = `/${ROOM1_NAME}`;
+      window.location.href = `/${ROOM4_NAME}`;
     }, 6000);
   }
 
