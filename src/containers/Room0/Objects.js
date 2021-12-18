@@ -116,7 +116,7 @@ const Objects = [
         toast.success("اوه! بذار ببینم پشت اینجا چیه...");
         playAudio(process.env.PUBLIC_URL + '/Room0/bang2.mp3');
         setTimeout(() => {
-          window.location.href = `/${ROOM1_NAME}`;
+          window.location.href = `/${ROOM1_NAME}/`;
         }, 6000)
       }
     },

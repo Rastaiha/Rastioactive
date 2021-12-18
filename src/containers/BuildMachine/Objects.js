@@ -32,7 +32,7 @@ const onDragEnd = (element, state, setState) => {
   }, 6000);
 
   setTimeout(() => {
-    window.location.href = `/${ROOM2_NAME}`;
+    window.location.href = `/${ROOM2_NAME}/`;
   }, 20000);
 }
 

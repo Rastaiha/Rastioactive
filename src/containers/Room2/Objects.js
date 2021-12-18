@@ -31,7 +31,7 @@ const Objects = (state, setState) => [
             if (inputPassword == '63') {
               toast.success('شوبخیر!');
               setTimeout(() => {
-                window.location.href = `/${ROOM3_NAME}`;
+                window.location.href = `/${ROOM3_NAME}/`;
               }, 6000);
             } else {
               toast.error('شوبخیر!');
@@ -134,7 +134,7 @@ const Objects = (state, setState) => [
     onClick: (e) => {
       toast.info('به سوی سرهم‌کردن قطعات...');
       setTimeout(() => {
-        window.location.href = `/${BUILD_MACHINE}`;
+        window.location.href = `/${BUILD_MACHINE}/`;
       }, 6000);
     }
   },

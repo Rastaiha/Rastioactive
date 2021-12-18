@@ -16,7 +16,7 @@ const onDragEnd = (element) => {
   if (Math.abs(coil.getX() - magnet.getX()) < 50 && Math.abs(coil.getY() - magnet.getY()) < 50) {
     toast.success('بریم ببینیم با آهن‌ربا و سیم‌پیچ چیکار میشه کرد...')
     setTimeout(() => {
-      window.location.href = `/${LAMP_SIMULATE}`;
+      window.location.href = `/${LAMP_SIMULATE}/`;
     }, 6000);
   }
 }

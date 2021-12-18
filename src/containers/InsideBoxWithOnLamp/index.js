@@ -35,7 +35,7 @@ const Index = () => {
     }, 21000);
 
     setTimeout(() => {
-      window.location.href = `/${ROOM1_NAME}`;
+      window.location.href = `/${ROOM1_NAME}/`;
     }, 33000);
   }, [])
 

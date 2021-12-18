@@ -21,7 +21,7 @@ const onDragEnd = (element) => {
   if (areTwoElementsNear(coil, magnet)) {
     toast.success('احسنت! بریم ببینیم با آهن‌ربا و سیم‌پیچ چیکار میشه کرد...')
     setTimeout(() => {
-      window.location.href = `/${LAMP_SIMULATE}`;
+      window.location.href = `/${LAMP_SIMULATE}/`;
     }, 6000);
   }
 }

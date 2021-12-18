@@ -57,7 +57,7 @@ const Objects = (state, setState) => [
       if (isItemPicked('paper')) {
         toast.info('راه بازگشتی در کار هست!');
         setTimeout(() => {
-          window.location.href = `/${ROOM4_NAME}`;
+          window.location.href = `/${ROOM4_NAME}/`;
           return;
         }, 6000);
       } else {
@@ -107,7 +107,7 @@ const Objects = (state, setState) => [
           if (inputText == '5274') {
             toast.success('فعلاً، حداحافظ!');
             setTimeout(() => {
-              window.location.href = `/${ROOM2_NAME}`;
+              window.location.href = `/${ROOM2_NAME}/`;
             }, 6000)
           } else {
             toast.error('زیرعسلی :(');
@@ -156,7 +156,7 @@ const Objects = (state, setState) => [
           if (inputText == '123563') {
             toast.success('بریم ببینیم توی جعبه چه خبره...');
             setTimeout(() => {
-              window.location.href = `/${INSIDE_BOX_WITH_OFF_LAMP}`;
+              window.location.href = `/${INSIDE_BOX_WITH_OFF_LAMP}/`;
             }, 6000)
           } else {
             toast.error('وا نشد :(');

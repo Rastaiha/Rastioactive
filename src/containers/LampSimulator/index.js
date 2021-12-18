@@ -48,7 +48,7 @@ const Index = ({
     if (answer == 'الکترومغناطیس') {
       toast.success('خنده بر لب می‌زنم تا کس نداند راز من!');
       setTimeout(() => {
-        window.location.href = `/${INSIDE_BOX_WITH_ON_LAMP}`;
+        window.location.href = `/${INSIDE_BOX_WITH_ON_LAMP}/`;
       }, 6000);
     } else {
       toast.error('ورنه این دنیا که ما دیدیم، خندیدن نداشت :(');

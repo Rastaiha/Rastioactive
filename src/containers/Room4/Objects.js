@@ -69,7 +69,7 @@ const Objects = (state, setState) => [
       if (isItemPicked('paper')) {
         toast.info('دادا ما رفتیم اتاقی یک...');
         setTimeout(() => {
-          window.location.href = `/${ROOM1_NAME}`;
+          window.location.href = `/${ROOM1_NAME}/`;
         }, 6000)
       } else {
         toast.info('یُخته بیشتر بگرد!');
