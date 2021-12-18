@@ -31,6 +31,12 @@ const Index = () => {
         handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
         text={'Manhattan Project Scientists - 1944'}
       />
+      <Image
+        image={'/Room1/paper.png'}
+        open={state?.showScientistsImage}
+        handleClose={() => { setState({ ...state, showScientistsImage: !state.showScientistsImage }) }}
+        text={'Manhattan Project Scientists - 1944'}
+      />
       <Password
         open={state?.showKeypadDialog}
         image={'/Room1/keypad-big.png'}

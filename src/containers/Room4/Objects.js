@@ -146,6 +146,7 @@ const Objects = (state, setState) => [
         showGateDialog: true,
         callback: (inputPassword) => {
           if (inputPassword == 'HECR') {
+            toast.info()
             const a = 2;
           } else if (inputPassword == 'UFSS') {
             const a = 2;
