@@ -76,6 +76,17 @@ const toolbarObjects = (state, setState) => [
       getFromToolbar(e.target);
     },
   },
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Toolbar/paper.png',
+    id: "paper-toolbar",
+    x: 580,
+    y: 940,
+    handyScale: 0.1,
+    visible: isItemPicked('paper'),
+    onClick: (e) => {
+      getFromToolbar(e.target);
+    },
+  },
 ]
 
 export default toolbarObjects;

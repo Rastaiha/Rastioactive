@@ -6,6 +6,7 @@ import {
   INSIDE_BOX_WITH_OFF_LAMP,
   isItemPicked,
   ROOM2_NAME,
+  ROOM4_NAME,
 } from '../utils';
 
 
@@ -28,7 +29,15 @@ const Objects = (state, setState) => [
     y: 1205,
     opacity: 0,
     onClick: (e) => {
-      toast.info('احتمالاً احتمالاً‌ راه بازگشتی در کار نیست!')
+      if (isItemPicked('paper')) {
+        toast.success('راه بازگشتی در کار هست!');
+        setTimeout(() => {
+          window.location.href = `/${ROOM4_NAME}`;
+          return;
+        }, 6000);
+      } else {
+        toast.info('احتمالاً احتمالاً‌ راه بازگشتی در کار نیست!');
+      }
     },
   },
   {
@@ -61,6 +70,10 @@ const Objects = (state, setState) => [
     x: 220,
     y: 1250,
     onClick: () => {
+      if (isItemPicked('paper')) {
+        toast.error('صد دفعه به این مسئول آزمایشگامون گفتم جنس بنجل نگیره. بیا، خراب شده!');
+        return;
+      }
       setState({
         ...state,
         showKeypadDialog: true,
@@ -126,6 +139,14 @@ const Objects = (state, setState) => [
       })
     },
   },
+
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/3signs.png',
+    id: "3signs",
+    x: 3800,
+    y: 1396,
+  },
+
   ...toolbarObjects(state, setState),
 ]
 

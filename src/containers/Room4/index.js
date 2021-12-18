@@ -32,16 +32,9 @@ const Index = () => {
         text={'Manhattan Project Scientists - 1944'}
       />
       <Password
-        open={state?.showKeypadDialog}
-        image={'/Room1/keypad-big.png'}
-        handleClose={() => { setState({ ...state, showKeypadDialog: !state.showKeypadDialog }) }}
-        callbackFunction={state?.keypadCallback}
-      />
-      <Password
-        open={state?.showSignsDialog}
-        image={'/Room1/3signs-big.png'}
-        handleClose={() => { setState({ ...state, showSignsDialog: !state.showSignsDialog }) }}
-        callbackFunction={state?.signsCallback}
+        open={state?.showGateDialog}
+        handleClose={() => { setState({ ...state, showGateDialog: !state.showGateDialog }) }}
+        callbackFunction={state?.callback}
       />
     </>
   );
