@@ -9,9 +9,31 @@ import {
   ROOM4_NAME,
 } from '../utils';
 
+function playAudio(url) {
+  const audio = new Audio(url)
+  audio.play();
+}
+
 
 
 const Objects = (state, setState) => [
+  {
+    imageUrl: process.env.PUBLIC_URL + '/Room1/touring-machine-layer.png',
+    id: "touring-machine-layer",
+    x: 2580,
+    y: 1170,
+    opacity: 0,
+    onClick: (e) => {
+      if (isItemPicked('paper')) {
+        toast.success('داره کار می‌کنه...');
+        playAudio(process.env.PUBLIC_URL + '/Room1/touring-machine.mp3')
+        setTimeout(() => {
+          window.open('https://cryptii.com/pipes/enigma-machine');
+        }, 7000)
+      }
+    },
+  },
+
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/box-layer.png',
     id: "box-layer",
@@ -22,6 +44,7 @@ const Objects = (state, setState) => [
       toast.info('یعنی تو جعبه چی می‌تونه باشه؟')
     },
   },
+
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/door-layer.png',
     id: "door-layer",
@@ -40,6 +63,7 @@ const Objects = (state, setState) => [
       }
     },
   },
+
   {
     imageUrl: process.env.PUBLIC_URL + '/Room1/book.png',
     id: "book",
