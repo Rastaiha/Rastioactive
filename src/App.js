@@ -33,21 +33,21 @@ const App = ({
   }, [dir]);
 
   // handle one active tab
-  // const [open, setOpen] = React.useState(false);
-  // window.addEventListener('storage', () => {
-  //   setOpen(true);
-  // }, false)
-  // localStorage.setItem('OneTab', Math.random())
+  const [open, setOpen] = React.useState(false);
+  window.addEventListener('storage', () => {
+    setOpen(true);
+  }, false)
+  localStorage.setItem('OneTab', Math.random())
 
   Konva.pixelRatio = 1
 
   // handle refresh on resize
-  // React.useEffect(() => {
-  //   function handleResize() {
-  //     window.location.reload()
-  //   }
-  //   window.addEventListener('resize', handleResize)
-  // })
+  React.useEffect(() => {
+    function handleResize() {
+      window.location.reload()
+    }
+    window.addEventListener('resize', handleResize)
+  })
 
   const Loading = () => {
     if (isFetching) {
@@ -83,7 +83,7 @@ const App = ({
         limit={3}
         draggable={false}
       />
-      <MoreThanOneTabDialog open={open} />
+      {/* <MoreThanOneTabDialog open={open} /> */}
     </>
   );
 };
