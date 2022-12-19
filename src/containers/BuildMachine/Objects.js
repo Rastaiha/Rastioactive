@@ -1,26 +1,14 @@
 import { toast } from 'react-toastify';
 
-let isTvClicked = false;
-let isSoundPlying = false;
-
 import {
-  addToBackground,
   areTwoElementsNear,
   getAnotherElementById,
-  isElementNearPoint,
-  LAMP_SIMULATE,
   ROOM2_NAME,
 } from '../utils';
 
+const isPieceLocked = new Array(8).fill(false);
 
-const onDragEnd = (element, state, setState) => {
-  for (let i = 2; i <= 7; i++) {
-    const piece = getAnotherElementById(element, `piece${i}`);
-    const point = getAnotherElementById(element, `point${i}`);
-    if (!areTwoElementsNear(piece, point)) {
-      return;
-    }
-  }
+const onMachineBuilt = (state, setState) => {
   localStorage.setItem('machine', '1');
   toast.success('احسنت! حالا نیرومند شدی...')
 
@@ -36,6 +24,20 @@ const onDragEnd = (element, state, setState) => {
   }, 20000);
 }
 
+const onDragEnd = (i, element, state, setState) => {
+  const piece = getAnotherElementById(element, `piece${i}`);
+  const point = getAnotherElementById(element, `point${i}`);
+  if (areTwoElementsNear(piece, point)) {
+    isPieceLocked[i] = true;
+  }
+  for (let i = 2; i <= 7; i++) {
+    if (!isPieceLocked[i]) {
+      return;
+    }
+  }
+  onMachineBuilt(state, setState);
+}
+
 const Objects = (state, setState) => [
   ...points,
   {
@@ -44,7 +46,7 @@ const Objects = (state, setState) => [
     x: 2000,
     y: 1108,
     onDragEnd: (e) => {
-      onDragEnd(e.target, state, setState);
+      onDragEnd(1, e.target, state, setState);
     }
   },
   {
@@ -52,9 +54,9 @@ const Objects = (state, setState) => [
     id: "piece2",
     x: 860,
     y: 508,
-    draggable: true,
+    draggable: !isPieceLocked[2],
     onDragEnd: (e) => {
-      onDragEnd(e.target, state, setState);
+      onDragEnd(2, e.target, state, setState);
     }
   },
   {
@@ -62,9 +64,9 @@ const Objects = (state, setState) => [
     id: "piece3",
     x: 3000,
     y: 1808,
-    draggable: true,
+    draggable: !isPieceLocked[3],
     onDragEnd: (e) => {
-      onDragEnd(e.target, state, setState);
+      onDragEnd(3, e.target, state, setState);
     }
   },
   {
@@ -72,9 +74,9 @@ const Objects = (state, setState) => [
     id: "piece4",
     x: 2060,
     y: 308,
-    draggable: true,
+    draggable: !isPieceLocked[4],
     onDragEnd: (e) => {
-      onDragEnd(e.target, state, setState);
+      onDragEnd(4, e.target, state, setState);
     }
   },
   {
@@ -82,19 +84,9 @@ const Objects = (state, setState) => [
     id: "piece5",
     x: 1260,
     y: 1808,
-    draggable: true,
+    draggable: !isPieceLocked[5],
     onDragEnd: (e) => {
-      onDragEnd(e.target, state, setState);
-    }
-  },
-  {
-    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/piece7.png',
-    id: "piece7",
-    x: 560,
-    y: 1308,
-    draggable: true,
-    onDragEnd: (e) => {
-      onDragEnd(e.target, state, setState);
+      onDragEnd(5, e.target, state, setState);
     }
   },
   {
@@ -102,12 +94,21 @@ const Objects = (state, setState) => [
     id: "piece6",
     x: 3500,
     y: 808,
-    draggable: true,
+    draggable: !isPieceLocked[6],
     onDragEnd: (e) => {
-      onDragEnd(e.target, state, setState);
+      onDragEnd(6, e.target, state, setState);
     }
   },
-  ...points,
+  {
+    imageUrl: process.env.PUBLIC_URL + '/BuildMachine/piece7.png',
+    id: "piece7",
+    x: 560,
+    y: 1308,
+    draggable: !isPieceLocked[7],
+    onDragEnd: (e) => {
+      onDragEnd(7, e.target, state, setState);
+    },
+  },
 ]
 
 const points = [
@@ -156,32 +157,3 @@ const points = [
 ]
 
 export default Objects;
-
-
-// let points = [
-//   {}, {},
-//   {
-//     x: 754,
-//     y: 428,
-//   },
-//   {
-//     x: 666,
-//     y: 545
-//   },
-//   {
-//     x: 804,
-//     y: 479,
-//   },
-//   {
-//     x: 908,
-//     y: 542,
-//   },
-//   {
-//     x: 1067,
-//     y: 466,
-//   },
-//   {
-//     x: 1179,
-//     y: 446,
-//   }
-// ]
