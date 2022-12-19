@@ -174,7 +174,7 @@ const books = (state, setState) => [
     handyScale: 3,
     visible: false,
     onClick: (e) => {
-      window.open('https://drive.google.com/file/d/1ACQpwjaopcphxYne4NTPkp8K7aZT3enh/view?usp=sharing')
+      window.open('https://rastioactive.s3.ir-thr-at1.arvanstorage.ir/The Birth and Death of the Sun Stellar Evoluti.pdf')
     }
   },
   {
@@ -185,7 +185,7 @@ const books = (state, setState) => [
     handyScale: 3,
     visible: false,
     onClick: (e) => {
-      window.open('https://drive.google.com/file/d/1aimIZo99mkXUzjFjZLWtNK8H3HS-dTHP/view?usp=sharing');
+      window.open('https://rastioactive.s3.ir-thr-at1.arvanstorage.ir/Principia-Mathematica.pdf');
     }
   },
   {
@@ -196,7 +196,7 @@ const books = (state, setState) => [
     handyScale: 3,
     visible: false,
     onClick: (e) => {
-      window.open('https://drive.google.com/file/d/1dOXfoMYB8QeUbWg0RBm82k97gGHM0gsV/view?usp=sharing');
+      window.open('https://rastioactive.s3.ir-thr-at1.arvanstorage.ir/فیزیک-هسته‌ای-فرمی.pdf');
     }
   },
 ]
