@@ -15,7 +15,7 @@ const toolbarObjects = (state, setState) => [
     handyScale: 1,
     visible: isItemPicked('document'),
     onClick: () => {
-      window.open('https://github.com/Rastaiha/upload_center/raw/main/%D9%BE%D8%B1%D9%88%D9%86%D8%AF%D9%87.pdf');
+      window.open('https://rastioactive.s3.ir-thr-at1.arvanstorage.ir/آزمایشگاه.pdf');
     },
   },
   {
