@@ -33,11 +33,11 @@ const App = ({
   }, [dir]);
 
   // handle one active tab
-  const [open, setOpen] = React.useState(false);
-  window.addEventListener('storage', () => {
-    setOpen(true);
-  }, false)
-  localStorage.setItem('OneTab', Math.random())
+  // const [open, setOpen] = React.useState(false);
+  // window.addEventListener('storage', () => {
+  //   setOpen(true);
+  // }, false)
+  // localStorage.setItem('OneTab', Math.random())
 
   Konva.pixelRatio = 1
 
