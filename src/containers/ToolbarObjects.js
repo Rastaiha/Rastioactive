@@ -15,7 +15,7 @@ const toolbarObjects = (state, setState) => [
     handyScale: 1,
     visible: isItemPicked('document'),
     onClick: () => {
-      window.open('https://rastioactive.s3.ir-thr-at1.arvanstorage.ir/آزمایشگاه.pdf');
+      window.open('https://rastioactive.s3.ir-thr-at1.arvanstorage.ir/cases.pdf');
     },
   },
   {
@@ -37,7 +37,7 @@ const toolbarObjects = (state, setState) => [
     visible: isItemPicked('book'),
     handyScale: 0.4,
     onClick: () => {
-      window.open('https://github.com/Rastaiha/upload_center/raw/main/%D8%AF%D9%81%D8%AA%D8%B1%DA%86%D9%87.pdf')
+      window.open('https://rastioactive.s3.ir-thr-at1.arvanstorage.ir/آزمایشگاه.pdf')
     },
   },
   {
