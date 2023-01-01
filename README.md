@@ -1,9 +1,10 @@
-# TootnekhAmoo
+# Rastioactive
 
 ## Installation
 
-- `git clone https://github.com/Rastaiha/TootnekhAmoo.git`
-- `cd TootnekhAmoo`
+- `git clone https://github.com/Rastaiha/Rastioactive.git`
+- `cd Rastioactive`
 - `yarn`
 - `yarn start`
-- visit http://localhost:3000/
+
+visit http://localhost:3000/
